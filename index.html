@@ -1,0 +1,750 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ACA Innovators - Let's Innovate!">
+    <meta name="keywords" content="CAD, CAE, mechanical design, 3D modeling, simulation, prototyping">
+    <meta name="author" content="ACA Innovators">
+    <title>ACA Innovators | Let's Innovate</title>
+    <link rel="icon" href="icon.png" type="image/png">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+
+            /* Translucent background image with fixed attachment */
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), /* Translucent white overlay */
+                url('background.jpg') center center no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        header {
+            background-color: #292c60;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            font-size: 1rem;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #292c60;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        nav a:hover, nav a.active {
+            background-color: #f4a62a; /* Gold color for headings */;
+        }
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            background: #F3F3F3;  /* light gray color for card background*/
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+           transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+        }
+        .card:hover {                     /* Card hover effect */
+            transform: scale(1.03); /* Slightly enlarges the card */
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Adds a stronger shadow */
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 95%;
+        }
+        .card-text {
+            flex: 1;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-right: 20px;
+            text-align: left;
+        }
+        .card-image {
+            flex: 1;
+            max-width: 300px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .card-video {
+            flex: 1;
+            max-width: 600px;
+            height: auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ddd;
+            border-radius: 15px
+        }
+        video {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .message-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .message-form {
+            background: #F3F3F3;  /* light gray color for card background*/
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: auto;
+        }
+        .message-form input, .message-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .message-form button {
+            background-color: #0044cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .message-form button:hover {
+            background-color: #0055dd;
+        }
+
+        footer {
+            background-color: #292c60;
+            color: #fff;
+            padding: 20px 0;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .footer-column {
+            flex: 1 1 250px;
+            margin: 10px;
+        }
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #ffd700; /* Gold color for headings */
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        .footer-column ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-column ul li a:hover {
+            color: #f4a62a; /* Gold color on hover */
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+        }
+        .footer-bottom a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-column {
+                text-align: center;
+            }
+        }
+
+        .whatsapp-popup {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+        }
+        .whatsapp-popup img {
+            width: 40px;
+            height: 40px;
+            border-radius: 25%;
+        }
+        .whatsapp-popup:hover {
+            background-color: #20b358; /* Slightly darker green */
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 80px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 25%;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: none
+            width: 40px;
+            height: 40px;
+        }
+        .scroll-to-top:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll(".section");
+            const navLinks = document.querySelectorAll("nav a");
+
+            navLinks.forEach((link, index) => {
+                link.addEventListener("click", (e) => {
+                    e.preventDefault();
+
+                    sections.forEach(section => section.classList.remove("active"));
+                    navLinks.forEach(nav => nav.classList.remove("active"));
+
+                    sections[index].classList.add("active");
+                    link.classList.add("active");
+
+                    // Scroll to the top of the page
+                    window.scrollTo(0, 0);
+                });
+            });
+
+            // Show the first section by default
+            sections[0].classList.add("active");
+            navLinks[0].classList.add("active");
+        })
+    </script>
+</head>
+
+
+
+
+<body>
+    <div class="background"></div>
+
+
+    <!-- WhatsApp Pop-up -->
+    <a href="https://wa.me/+919871137235?text=Hi, I would like to know more about your services!" 
+       target="_blank" 
+       class="whatsapp-popup">
+        <img src="https://adityagithubgupta.github.io/WebsiteACAI/WhatsAppIcon.jpg" alt="WhatsApp">
+    </a>
+
+    <header>
+        <img src="https://adityagithubgupta.github.io/WebsiteACAI/Logo.jpg" alt="Logo" width="100" height="auto"><h1 style="font-size: 4rem; font-weight: bold;">ACA Innovators</h1>
+        <p>Your Trusted Partner in Mechanical Design</p>
+    </header>
+
+
+    <nav>
+        <a href="#"Home="active"><strong>Home</strong></a>
+        <a href="#AboutUs"><strong>About Us</strong></a>
+        <a href="#services"><strong>Services</strong></a>
+        <a href="#testimonials"><strong>Testimonials</strong></a>
+        <a href="#message"><strong>Message</strong></a>
+    </nav>
+
+    <div id="home" class="section">
+
+        <div class="card">
+             <h3>Cutting Edge Solutions For Your Mechanical Engineering Needs</h3>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                    	<p>At ACA Innovators, we specialize in CAD-CAM-CAE solutions that optimize designs, streamline processes, and drive innovation. Using cutting-edge tools and the latest technologies, we offer high-precision 2D drafting, 3D modeling, simulation, and prototyping to help businesses reduce costs, optimize resources, and maximize profitability. Our expertise spans across industries such as automation, medical devices, consumer electronics, robotics, manufacturing, and marine engineering, ensuring tailored solutions for unique needs.</p>
+                    	<p>With a commitment to quality, precision, and innovation, ACA Innovators helps businesses bring ideas to life, improve efficiency, and achieve engineering excellence. Let’s collaborate to transform your vision into reality.</p>
+	            </div>
+                    <div class="card-video">
+                        <video autoplay loop muted playsinline>
+                            <source src="https://adityagithubgupta.github.io/WebsiteACAI/VideoPlane.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                </div>
+	     </div>
+        </div>
+
+	<section id="what-makes-us-different" style="background-color: #f4a62a; padding: 50px 0; text-align: center; color: white;">
+	    <h2 style="font-size: 2rem; margin-bottom: 30px;">What makes us different</h2>
+    
+	    <div style="display: flex; justify-content: center; gap: 125px; flex-wrap: wrap; max-width: 1200px; margin: auto;">
+        
+	        <!-- Quality Output -->
+	        <div style="flex: 1; min-width: 250px; max-width: 300px;">
+	            <img src="https://adityagithubgupta.github.io/WebsiteACAI/HomeQualityOutput.jpg" alt="Quality Output" style="width: 50px;">
+	            <h3>Quality Output: Accuracy and Precision</h3>
+	            <p>We believe that exceptional quality should speak for itself, and we take pride in empowering our clients to showcase their outstanding work. This commitment to excellence is at the heart of everything we do. Through collaboration and expertise, we ensure that every project reflects the highest standards of engineering innovation.</p>
+	        </div>
+
+	        <!-- Unique Design -->
+	        <div style="flex: 1; min-width: 250px; max-width: 300px;">
+	            <img src="https://adityagithubgupta.github.io/WebsiteACAI/HomeUniqueDesign.jpg" alt="Unique Design" style="width: 50px;">
+	            <h3>Unique Design: Customisable Output</h3>
+	            <p>The journey of creative design is endless, with constant opportunities for growth and innovation. We are dedicated to fostering an environment that encourages learning, problem-solving, and thinking beyond conventional boundaries. By embracing challenges and pushing limits, we strive to deliver exceptional engineering solutions that stand out.</p>
+	        </div>
+
+	        <!-- Dedication -->
+	        <div style="flex: 1; min-width: 250px; max-width: 300px;">
+	            <img src="https://adityagithubgupta.github.io/WebsiteACAI/HomeDedication.jpg" alt="Dedication" style="width: 50px;">
+	            <h3>Dedication: Fast Turnaround Time</h3>
+	            <p>As experienced designers, we understand the value of skilled craftsmanship and the critical role it plays in successful projects. Our team is committed to continuously improving and delivering innovative solutions to support our clients' needs with precision and dedication. With a focus on collaboration and excellence, we aim to bring your ideas to life efficiently and effectively.</p>
+	        </div>
+	    </div>
+	</section>
+
+    </div>
+
+
+
+
+    <div id="about" class="section">
+	<h2 style="font-size: 2rem; margin-bottom: 30px;">About Us</h2>               <!-- ABOUT US -->
+
+        <div class="card">
+             <h3>Committed to Excellence and Integrity</h3>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                <p>At ACA Innovators, we are driven by a steadfast commitment to excellence, integrity, and quality in all that we do. Our mission is to deliver exceptional CAD-CAM-CAE solutions that exceed client expectations while adhering to the highest ethical standards. Whether it’s the precision of our designs or the clarity of our communication, every aspect of our work reflects our dedication to building trust and delivering value to our clients and stakeholders.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/OurServicesExcellence.jpg" alt="Committed to Excellence and Integrity" class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>Global Reach, Tailored Expertise</h3>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                <p>With a strong presence in India and Europe, ACA Innovators provides cutting-edge design and engineering solutions across diverse industries, including automation, medical devices, consumer products, and manufacturing. Our global reach is supported by an understanding of regional needs, enabling us to offer tailored solutions that resonate with the challenges and goals of our clients.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/OurServicesGlobalReach.jpg" alt="Global Reach, Tailored Expertise" class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>Data Security You Can Rely On</h3>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                <p>Confidentiality and data security are at the core of our operations. We understand the critical importance of safeguarding proprietary information and intellectual property. To ensure absolute protection of our clients' data, we actively enter into Non-Disclosure Agreements (NDAs) and Confidentiality Agreements as required. This rigorous approach guarantees that all shared information remains secure and confidential throughout the project lifecycle.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/AboutUsPic3.jpg" alt="Data Security You Can Rely On" class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>Cutting-Edge Solutions, Powered by Innovation</h3>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                <p>At ACA Innovators, our expertise in CAD-CAM-CAE is backed by state-of-the-art 3D designing, 2D designing and analysis tools. We specialize in providing solutions that span 3D modeling, 2D drafting, simulation, product design, prototyping, and manufacturing support. By combining technical excellence with innovative problem-solving, we address complex design and engineering challenges with efficiency and precision.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/AboutUsPic4.jpg" alt="Cutting-Edge Solutions, Powered by Innovation" class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+	     <h3>Our Vision for Success</h3>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                <p>ACA Innovators' journey is defined by an unwavering commitment to empowering businesses with superior mechanical engineering solutions. We aim to build long-lasting relationships founded on trust, collaboration, and mutual success. Every project we undertake reflects our dedication to quality, innovation, and delivering value, ensuring that our clients achieve their engineering and design goals with confidence.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/AboutUsVision.jpg" alt="Our Vision for Success" class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>Multi Lingual Support</h3>
+	     <div class="card-content">
+ 	            <div class="card-text">
+               	    	<p>At ACA Innovators, we believe in seamless communication with our clients. To better serve our diverse clientele, we offer business support in English, Hindi, and German. Whether you're in India, Europe, or beyond, our team ensures clear and efficient collaboration across languages.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/AboutUsMultiLingualSupport.jpg" alt="Multi Lingual Support" class="card-image">
+	     </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="services" class="section">
+	<h2 style="font-size: 2rem; margin-bottom: 30px;">Our Services</h2>               <!-- OUR SERVICES -->
+
+	 <!-- <p>At ACA Innovators, we pride ourselves on delivering cutting-edge mechanical engineering solutions tailored to your unique needs. Our services span a broad range of expertise, from CAD modeling to advanced analysis and rapid prototyping, ensuring comprehensive support for every stage of your product development journey.</p> -->
+
+        <div class="card">
+             <h3>CAD Conversions</h3>
+	     <p>Simplify design updates, streamline workflows, and improve project accuracy with our reliable and efficient CAD conversion services. Whether you're digitizing old drawings, transitioning between software, or standardizing file formats, we ensure precision and quality every step of the way.</p>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                    	<p>Our CAD Conversion Services</p>
+                    	<p><strong>Image to CAD Conversion:</strong> Transform low-detail or conceptual images into highly accurate CAD models. Perfect for sketches, scanned documents, or raster images, this service enables engineers and designers to work with detailed, scalable, and editable CAD drawings.</p>
+                    	<p><strong>Paper to CAD Conversion:</strong> Modernize your legacy documentation by digitizing paper-based designs into precise CAD files. We meticulously recreate dimensions, annotations, and details, ensuring every element is captured for seamless integration into modern workflows.</p>
+                    	<p><strong>PDF to CAD Conversion:</strong> Convert static PDF files into fully editable CAD designs. This service is ideal for making design modifications, adding new features, or updating layouts without starting from scratch.</p>
+                    	<p><strong>CAD to CAD Conversion:</strong> Streamline collaboration and compatibility by adapting files between different CAD formats. Whether transitioning between software platforms or meeting specific client requirements, we ensure file integrity, proper scaling, and format compatibility.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/OurServicesCadConversion.jpg" alt="CAD Conversions" class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>Concept Design</h3>
+	     <p>Transform your ideas into reality with our innovative concept design services. We help you visualize and refine your concepts, providing a strong foundation for development. Whether you’re working on a new product, component, or system, our creative and technical expertise ensures your vision is accurately captured and tailored to your goals.</p>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                    	<p>Our Concept Design Services:</p>
+                    	<p><strong>Conceptual Designs:</strong> We bring your ideas to life through initial sketches, 3D models, and visualizations. By capturing the essence of your vision, we help you explore different design possibilities and refine your concept before committing to full-scale development. Whether it's a consumer product, a mechanical system, or an architectural design, we ensure your concept stands out with creativity and functionality.</p>
+                    	<p><strong>Sheet Metal Enclosure Product Designs:</strong> Specializing in sheet metal enclosure designs, we focus on creating innovative and functional solutions for your products. From electronics housing to industrial enclosures, we design for manufacturability, ensuring optimal use of materials, efficient fabrication processes, and ease of assembly. Our designs balance strength, aesthetics, and cost-effectiveness to meet your requirements.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/OurServicesConceptDesign.jpg" alt="Concept Design"  class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>CAD Modeling</h3>
+                    	<p>Unlock the potential of your designs with our expert CAD modeling services. We deliver precise and versatile CAD models tailored to your project needs. From concept to production, our expertise spans multiple modeling techniques, ensuring designs are robust and manufacturable.</p>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                    	<p>Our Mechanical CAD modeling Services:</p>
+                    	<p><strong>Solid Modeling:</strong> We craft 3D solid models with a focus on functional and structural integrity. These models provide accurate representations of your products, allowing for detailed analysis, simulation, and testing. Solid modeling is perfect for designing parts and assemblies that require precision and high-performance standards.</p>
+                    	<p><strong>Surface Modeling:</strong> Our surface modeling services cater to projects requiring intricate, smooth, and aesthetically appealing designs. This technique is ideal for creating complex geometries, ergonomic shapes, and visually striking designs, often used in consumer electronics, automotive exteriors, and medical devices.</p>
+                    	<p><strong>Assembly Modeling:</strong> We create complete assemblies that simulate the precise interaction of components in your design. Our assembly models ensure that parts fit together seamlessly, function correctly, and are easy to assemble or disassemble during production or maintenance. This is especially useful for machinery, robotics, and multi-component products.</p>
+                    	<p><strong>Bill of Materials (BOM):</strong> Alongside detailed CAD models, we provide comprehensive Bills of Materials (BOM) for production. Our BOM includes a complete list of materials, components, quantities, and specifications, streamlining procurement and manufacturing processes.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/OurServicesWireframeModeling.jpg" alt="CAD Modeling"  class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>Prototype Design and Engineering</h3>
+                    	<p>We transform ideas into tangible prototypes, helping you bridge the gap between concept and production. Our prototyping services enable rapid iteration, functional testing, and design validation to ensure a smooth transition to manufacturing.</p>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                    	<p>Our Mechanical CAD modeling Services:</p>
+                    	<p><strong>Proof-of-Concept Prototype:</strong> Early-stage models designed to validate feasibility, design intent, and core functionality. Ideal for refining ideas before investing in full-scale development.</p>
+                    	<p><strong>Functional Prototype:</strong> Fully working prototypes that simulate real-world performance, allowing for hands-on testing, engineering validation, and design optimization. Used for mechanical testing, user feedback, and product improvements.</p>
+                    	<p><strong>Visual Prototype:</strong> High-fidelity models showcasing design aesthetics, form, and ergonomics. Perfect for investor presentations, marketing, and stakeholder demonstrations before mass production.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/OurServicesPrototype.jpg" alt="Prototype Design and Engineering"  class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>3D Product Animation</h3>
+	     <p>Bring your designs to life with our professional 3D animations, crafted for technical, industrial, and marketing applications. Whether you need to demonstrate functionality, explain complex mechanisms, or create stunning visual presentations, our animations enhance clarity and engagement.</p>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                    	<p>Our Mechanical CAD modeling Services:</p>
+                    	<p><strong>Basic 3D Animation:</strong> Simple yet effective animations showcasing key product features, ideal for marketing and concept demonstrations.</p>
+                    	<p><strong>Technical Animation:</strong> Detailed animations illustrating complex technical concepts, assembly processes, or mechanical movements for training and engineering purposes.</p>
+                    	<p><strong>Industrial Animation:</strong> Visualizations tailored for industrial applications, including manufacturing workflows, automation processes, and large-scale machinery demonstrations.</p>
+                    	<p><strong>Hyper-Realistic Animations:</strong> High-fidelity, photorealistic animations that create immersive and impactful presentations for investors, clients, and product launches.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/OurServicesAnimation.jpg" alt="3D Product Animation"  class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>Rapid Prototyping</h3>
+	     <p>Accelerate your product development with our advanced rapid prototyping services, delivering speed, precision, and efficiency. We help you validate designs, test functionality, and refine products before full-scale production.</p>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                    	<p>Our Mechanical CAD modeling Services:</p>
+                    	<p><strong>3D Printing PrototypingAnimation:</strong> Fast and cost-effective prototypes using additive manufacturing. Perfect for concept models, design validation, and rapid iterations. Supports a variety of materials and complex geometries.</p>
+                    	<p><strong>Sheet Metal Prototyping:</strong> Functional prototypes crafted from sheet metal, designed for real-world testing and manufacturability. Used for enclosures, brackets, and structural components.</p>
+                    	<p><strong>CNC Prototyping:</strong> High-precision prototypes machined from metal or plastic, ensuring durability, tight tolerances, and manufacturability. Ideal for functional testing and engineering validation.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/OurServicesRapidPrinting.jpg" alt="Rapid Prototyping"  class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>Finite Element Analysis</h3>
+	     <p>Enhance product reliability and performance with our advanced Finite Element Analysis (FEA) services. We help predict how your designs will respond to real-world conditions, enabling informed engineering decisions and reducing development risks.</p>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                    	<p>Our Mechanical CAD modeling Services:</p>
+                    	<p><strong>Stress / Structural Analysis:</strong> Evaluates stress distribution, deformation, and load-bearing capacity to ensure structural integrity and safety.</p>
+                    	<p><strong>Static Analysis:</strong> Assesses how components perform under steady loads, identifying potential weak points and optimizing material usage.</p>
+                    	<p><strong>Linear Analysis:</strong> Simulates material behavior under small deformations, providing accurate results for standard engineering applications.</p>
+                    	<p><strong>Dynamic Analysis:</strong> Examines time-dependent forces such as vibrations, impacts, and cyclic loading to improve durability and performance.</p>
+                    	<p><strong>Thermal Analysis:</strong> Analyzes heat distribution, thermal stresses, and material responses to temperature changes, essential for electronics, engines, and industrial systems.</p>
+                    	<p><strong>CFD (Computational Fluid Dynamics) Analysis:</strong> Simulates fluid flow, pressure distribution, heat transfer, and aerodynamics to optimize designs for efficiency and performance.</p>
+                    	<p><strong>Design Optimization:</strong> Refines product designs by balancing strength, weight, material selection, and cost for enhanced efficiency and manufacturability.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/OurServicesFEA.jpg" alt="Finite Element Analysis"  class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>Manufacturing Support</h3>
+	     <p>Enhance product reliability and performance with our advanced Finite Element Analysis (FEA) services. We help predict how your designs will respond to real-world conditions, enabling informed engineering decisions and reducing development risks.</p>
+	     <div class="card-content">
+ 	            <div class="card-text">
+                    	<p>Our Mechanical CAD modeling Services:</p>
+                    	<p><strong>3D Printing:</strong> Rapid prototyping and low-volume production with precise, cost-effective additive manufacturing solutions.</p>
+                    	<p><strong>Sheet Metal Fabrication:</strong> Design optimization for bending, cutting, and forming sheet metal components, ensuring structural integrity and manufacturability.</p>
+                    	<p><strong>Welding:</strong> Simulation and validation of weld joints to enhance strength, durability, and performance under real-world conditions.</p>
+                    	<p><strong>Machining:</strong> Optimized designs for CNC milling, turning, and other machining processes, ensuring efficiency and accuracy.</p>
+                    	<p><strong>Assembly Support:</strong> Analysis of fit, tolerances, and manufacturability to ensure seamless component integration and efficient assembly workflows.</p>
+                    	<p><strong>Injection Molding:</strong> Design validation for plastic molding processes, focusing on material flow, shrinkage, and defect prevention.</p>
+                    	<p><strong>Die Punching:</strong> Precision-driven support for stamping and punching processes, optimizing tooling and minimizing material waste.</p>
+                    	<p><strong>Casting:</strong> Design refinement for metal casting processes, ensuring optimal flow, solidification, and defect-free production.</p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/OurServicesManufacturing.jpg" alt="Manufacturing Support"  class="card-image">
+	     </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="testimonials" class="section">
+	<h2 style="font-size: 2rem; margin-bottom: 30px;">What Our Clients Say</h2>               <!-- TESTIMONIALS -->
+
+        <div class="card">
+             <h3>Svastir Ventures</h3>           <!-- ClientName1 -->
+	     <div class="card-content">
+ 	            <div class="card-text">
+        	    	<p>"I had a fantastic experience working with ACA Innovators on multiple tasks, including 3D modeling, concept creation, and converting 2D files into 3D models. Their attention to detail, technical expertise, and ability to bring ideas to life exceeded my expectations. They delivered high-quality results on time, maintained clear communication throughout, and showed a deep understanding of my requirements. Highly recommend their services!"</p>
+        	    	<p><strong>- Pankaj Khare</strong> </p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/Testimonial1.jpg" alt="Client1" alt="Client A Photo" class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>TAXITUR</h3>           <!-- ClientName2 -->
+	     <div class="card-content">
+ 	            <div class="card-text">
+        	    	<p>"Had a great experience working with ACA Innovators on a design project. They efficiently transformed ideas into detailed CAD models. The team was punctual, delivering quality results on time. Appreciate their professionalism and expertise!"</p>
+        	    	<p><strong>- Jarle Tungeland</strong> </p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/Testimonial2.jpg" alt="Client2" alt="Client C Photo" class="card-image">
+	     </div>
+        </div>
+
+        <div class="card">
+             <h3>Pragati Industries</h3>           <!-- ClientName3 -->
+	     <div class="card-content">
+ 	            <div class="card-text">
+        		<p>"Highly impressed with ACA Innovators! Worked on optimizing and designing conveyor layouts in CAD for various industries. The professionalism and timely updates made the process seamless. Impressed!!"</p>
+        	    	<p><strong>- Utkarsh Agarwal</strong> </p>
+	            </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAI/Testimonial3.jpg" alt="Client3" alt="Client B Photo" class="card-image">
+	     </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div id="message" class="section">
+	<h2 style="font-size: 2rem; margin-bottom: 30px;">Message Us</h2>               <!-- MESSAGE US -->
+
+           <div class="message">
+                <div class="message-form">
+		    <p>Would you like to speak to one of our Engineers over the phone?</p>
+		    <p>Just submit your details and we'll be in touch shortly.</p>
+
+                    <form action="SendEmail.php" method="POST">
+                        <label for="name"><strong>Name:</strong></label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="organisation"><strong>Organisation (If any):</strong></label>
+                        <input type="organisation" id="organisation" name="organisation" required>
+
+                        <label for="email"><strong>Email:</strong></label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="phone"><strong>Phone:</strong></label>
+                        <input type="phone" id="phone" name="phone" required>
+
+                        <label for="message"><strong>Message:</strong></label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+	    </div>
+    </div>
+
+    <footer class="footer">                                                 <!-- FOOTER -->
+        <div class="footer-container">
+
+            <div class="footer-column">
+                <h3>ACA Innovators</h3>
+                <ul>
+                    <li>Let's Innovate</li>
+                    <li><img src="https://adityagithubgupta.github.io/WebsiteACAI/Logo.jpg" alt="Logo" width="150" height="auto"></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">CAD Conversions</a></li>
+                    <li><a href="#">Concept Design</a></li>
+                    <li><a href="#">Prototype Design and Engineering</a></li>
+                    <li><a href="#">3D Product Animation</a></li>
+                    <li><a href="#">Rapid Prototyping</a></li>
+                    <li><a href="#">Finite Element Analysis</a></li>
+                    <li><a href="#">Manufacturing Support</a></li>
+                    <li><a href="#">Services</a></li>
+                </ul>
+            </div>
+
+<!-- Footer Column 
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+-->
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><strong>Email:</strong> aditya@acainnovators.in</li>
+                    <li><strong>Phone:</strong> +91 98711 37235</li>
+                    <li><strong>Registered Address:</strong> ACA Innovators, A-57, DDA Sheds, Ma Anandmayee Marg, Okhla Phase 2, Okhla Industrial Area, New Delhi, India - 110020</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2025 ACA Innovators. All Rights Reserved. | <a href="#">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollBtn">&#8593;</button>
+    <script>
+        // Get the button
+        let scrollBtn = document.getElementById("scrollBtn");
+
+        // When the user scrolls down 100px from the top, show the button
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        };
+
+        // When the user clicks the button, scroll to the top of the document
+        scrollBtn.onclick = function() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+        };
+    </script>
+
+    <script>
+        // Add active class to the current navigation link based on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('nav a');
+
+            window.addEventListener('scroll', () => {
+                let fromTop = window.scrollY + 10;
+
+                navLinks.forEach(link => {
+                    const section = document.querySelector(link.getAttribute('href'));
+
+                    if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+	<script>
+	document.getElementById("message-form").addEventListener("submit", function(event) {
+	    event.preventDefault(); // Prevent form from reloading page
+	
+	    var formData = new FormData(this);
+	
+	    fetch("send_email.php", {
+	        method: "POST",
+	        body: formData
+	    })
+	    .then(response => response.text())
+	    .then(data => {
+	        if (data.trim() === "success") {
+	            alert("✅ Your message has been sent successfully!");
+	            document.getElementById("contactForm").reset();
+	        } else {
+	            alert("❌ Error sending message. Please try again.");
+	        }
+	    })
+	    .catch(error => console.error("Error:", error));
+	});
+	</script>
+
+</body>
+</html>
