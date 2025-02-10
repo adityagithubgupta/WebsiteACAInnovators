@@ -6,7 +6,7 @@
     <meta name="keywords" content="CAD, CAM, CAE, mechanical design, 3D modeling, simulation, prototype, concept design, sheet metal, surface modeling, assembly, bill of materials, BOM, Animation, 3D print, FEA">
     <meta name="author" content="ACA Innovators">
     <title>ACA Innovators | Let's Innovate</title>
-    <link rel="icon" href="icon.jpg" type="image/jpg">
+    <link rel="icon" href="Icon.jpg" type="image/jpg">
 
     <style>
         body {
@@ -294,7 +294,7 @@
 
 
     <header>
-        <h1 style="font-size: 4rem; font-weight: bold;"><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="Logo" width="80" height="auto"> ACA Innovators</h1>
+        <h1 style="font-size: 4rem; font-weight: bold;"><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="ACA Innovators Logo" width="105" height="auto"> ACA Innovators</h1>
         <p>Your Trusted Partner in Mechanical Design</p>
     </header>
 
@@ -635,8 +635,8 @@
 
             <div class="footer-column">
                 <ul>
-                    <li><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="Logo" width="150" height="auto"></li>
-                    <li>Let's Innovate</li>
+                    <li><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="ACA Innovators Logo" width="250" height="auto"></li>
+                    <h3 style="font-size: 1.5rem;">Let's Innovate</h3>
                 </ul>
             </div>
 
@@ -721,29 +721,6 @@
                 });
             });
         });
-    </script>
-
-    <script>
-	document.getElementById("message-form").addEventListener("submit", function(event) {
-	    event.preventDefault(); // Prevent form from reloading page
-	
-	    var formData = new FormData(this);
-	
-	    fetch("send_email.php", {
-	        method: "POST",
-	        body: formData
-	    })
-	    .then(response => response.text())
-	    .then(data => {
-	        if (data.trim() === "success") {
-	            alert("✅ Your message has been sent successfully!");
-	            document.getElementById("contactForm").reset();
-	        } else {
-	            alert("❌ Error sending message. Please try again.");
-	        }
-	    })
-	    .catch(error => console.error("Error:", error));
-	});
     </script>
 
 </body>
