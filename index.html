@@ -283,7 +283,23 @@
 	}
 	.close:hover {
 	    color: red;
-	}	    
+	}
+        #rotate-message {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: black;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            padding: 20px;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            justify-content: center;
+            align-items: center;
+        }	    
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -793,6 +809,24 @@
 
     <!-- Scroll to Top Button -->
     <button class="scroll-to-top" id="scrollBtn">&#8593;</button>
+
+    <div id="rotate-message">
+        📱 Please rotate your device to <strong>landscape mode</strong> for the best experience.
+    </div>
+
+    <script>
+        function checkOrientation() {
+            if (window.innerHeight > window.innerWidth) {
+                document.getElementById("rotate-message").style.display = "flex";
+            } else {
+                document.getElementById("rotate-message").style.display = "none";
+            }
+        }
+
+        window.addEventListener("resize", checkOrientation);
+        window.addEventListener("load", checkOrientation);
+    </script>
+	
     <script>
         // Get the button
         let scrollBtn = document.getElementById("scrollBtn");
