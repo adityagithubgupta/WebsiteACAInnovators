@@ -130,19 +130,27 @@
             margin-right: 20px;
             text-align: left;
         }
-        .card-image, .card-video {
+        .card-image {
             flex: 1;
-            max-width: 40%; /* Adjusted max-width for better two-column layout */
+            max-width: 300px; /* Adjusted max-width for better two-column layout */
             height: auto;
             border-radius: 15px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             object-fit: cover; /* Ensures images/videos scale nicely */
         }
+		
         .card-video {
+			flex: 1;
+            max-width: 400px; /* Adjusted max-width for better two-column layout */
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            object-fit: cover; /* Ensures images/videos scale nicely */
             border: 2px solid #ddd;
         }
         video {
             width: 100%;
+			max-width: 300px;
             height: auto;
             border-radius: 10px;
         }
@@ -155,7 +163,7 @@
             color: var(--text-color-light);
             border-radius: 15px;
             margin: 20px auto;
-            max-width: 1040px;
+            max-width: 1100px;
         }
         #what-makes-us-different h3 {
             color: var(--text-color-light); /* Override card heading color */
@@ -709,12 +717,12 @@
                         <p><strong>Boosted Morale:</strong> Reduces injury risks and legal liabilities while boosting operator confidence and morale.</p>
                     </div>
                     <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/SafetyShuttle3.jpg" alt="Render of the Safety Shuttle final design" class="card-image" style="margin-right: 20px;">
-                    <!--<div class="card-video">-->
+                    <div class="card-video">
                         <video autoplay loop muted playsinline aria-label="Animation of Safety Shuttle in operation">
                             <source src="https://adityagithubgupta.github.io/WebsiteACAInnovators/SafetyShuttleVideo1.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-                    <!--</div>-->
+                    </div>
                 </div>
             </div>
         </section>
@@ -1031,6 +1039,7 @@
     <button class="scroll-to-top" id="scrollBtn" aria-label="Scroll to top">&#8593;</button>
 </body>
 </html>
+
 
 
 
