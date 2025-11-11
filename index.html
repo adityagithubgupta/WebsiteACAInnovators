@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,28 +10,39 @@
     <link rel="icon" href="Icon.jpg" type="image/jpg">
 
     <style>
+        /* CSS Variables for Easy Management */
+        :root {
+            --primary-color: #292c60; /* Dark Blue */
+            --secondary-color: #f4a62a; /* Gold/Orange for accents */
+            --light-bg: #F3F3F3; /* Light Gray for cards */
+            --text-color-light: #fff;
+            --text-color-dark: #000;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-
+            
             /* Translucent background image with fixed attachment */
             background: 
                 linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)), /* Translucent white overlay */
                 url('background.jpg') center center no-repeat;
             background-size: cover;
             background-attachment: fixed;
+            color: var(--text-color-dark); /* Default text color */
         }
 
         header {
-            background-color: #292c60;
-            color: #fff;
+            background-color: var(--primary-color);
+            color: var(--text-color-light);
             text-align: center;
             padding: 20px 0;
         }
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 4rem; /* Increased size for visual impact */
+            font-weight: bold;
         }
         header p {
             font-size: 1rem;
@@ -38,36 +50,48 @@
         nav {
             display: flex;
             justify-content: center;
-            background-color: #292c60;
+            background-color: var(--primary-color);
             padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Added shadow for better separation */
         }
         nav a {
-            color: #fff;
+            color: var(--text-color-light);
             text-decoration: none;
             margin: 0 15px;
-            padding: 10px;
+            padding: 10px 15px; /* Slightly more padding */
             border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
         nav a:hover, nav a.active {
-            background-color: #f4a62a; /* Gold color for headings */;
+            background-color: var(--secondary-color);
         }
-        .section {
+        
+        /* Using ID selector for the main content section */
+        main {
+            padding-top: 20px; /* Space below sticky nav */
+        }
+        .content-section {
             padding: 40px 20px;
             text-align: center;
             display: none;
         }
-        .section.active {
+        .content-section.active {
             display: block;
+        }
+        .content-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color); /* Primary color for main headings */
         }
 
         .card {
             width: 90%;
             max-width: 1000px;
             margin: 20px auto;
-            background: #F3F3F3;  /* light gray color for card background*/
+            background: var(--light-bg);
             border: 2px solid #ddd;
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -75,139 +99,291 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
-           transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left; /* Ensures card text aligns correctly */
         }
-        .card:hover {                     /* Card hover effect */
-            transform: scale(1.15); /* Slightly enlarges the card */
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5); /* Adds a stronger shadow */
+        .card:hover {
+            transform: scale(1.03); /* Reduced scale for subtler effect */
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
         }
         .card h3 {
             font-size: 1.5rem;
             font-weight: bold;
             text-align: center;
             margin-bottom: 15px;
+            color: var(--secondary-color); /* Secondary color for card headings */
+            width: 100%;
         }
         .card-content {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            width: 95%;
+            width: 100%; /* Changed to 100% for consistency */
+            margin-bottom: 15px;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
         }
         .card-text {
             flex: 1;
+            min-width: 300px; /* Ensures text has enough space */
             font-size: 1rem;
-            line-height: 1.5;
+            line-height: 1.6; /* Improved readability */
             margin-right: 20px;
             text-align: left;
         }
-        .card-image {
+        .card-image, .card-video {
             flex: 1;
-            max-width: 300px;
+            max-width: 40%; /* Adjusted max-width for better two-column layout */
             height: auto;
             border-radius: 15px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            object-fit: cover; /* Ensures images/videos scale nicely */
         }
         .card-video {
-            flex: 1;
-            max-width: 400px;
-            height: auto;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border: 2px solid #ddd;
-            border-radius: 15px
         }
         video {
             width: 100%;
-            max-width: 300px;
             height: auto;
             border-radius: 10px;
         }
 
-        .message-section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
+        /* Home Section Styling */
+        #what-makes-us-different {
+            background-color: var(--secondary-color);
+            padding: 50px 20px;
+            text-align: center;
+            color: var(--text-color-light);
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 1040px;
         }
+        #what-makes-us-different h3 {
+            color: var(--text-color-light); /* Override card heading color */
+        }
+        #what-makes-us-different > div {
+            display: flex;
+            justify-content: center;
+            gap: 50px; /* Reduced gap for better fitting */
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+        }
+        #what-makes-us-different > div > div {
+            flex: 1 1 250px; /* Flexible and base width */
+            max-width: 300px;
+            padding: 10px;
+        }
+
+
+        /* Message Form Styling */
         .message-form {
-            background: #F3F3F3;  /* light gray color for card background*/
+            background: var(--light-bg);
             border: 2px solid #ddd;
             border-radius: 15px;
-            padding: 20px;
+            padding: 30px; /* Increased padding */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             max-width: 700px;
-            margin: auto;
+            margin: 20px auto;
+        }
+        .message-form p {
+            text-align: center;
+        }
+        .message-form label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: left;
         }
         .message-form input, .message-form textarea {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
+            margin-top: 5px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            box-sizing: border-box; /* Includes padding and border in the element's total width and height */
         }
         .message-form button {
-            background-color: #0044cc;
+            background-color: var(--primary-color);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 20px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
         }
         .message-form button:hover {
-            background-color: #0055dd;
+            background-color: #0056b3; /* Slightly darker blue */
         }
 
+        /* Footer Styling */
         footer {
-            background-color: #292c60;
-            color: #fff;
+            background-color: var(--primary-color);
+            color: var(--text-color-light);
             padding: 20px 0;
+            margin-top: 40px; /* Space above footer */
         }
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: space-around; /* Changed to space-around for better spread */
         }
         .footer-column {
             flex: 1 1 250px;
-            margin: 10px;
+            margin: 10px 20px;
         }
         .footer-column h3 {
             font-size: 18px;
             margin-bottom: 15px;
-            color: #ffd700; /* Gold color for headings */
+            color: var(--secondary-color);
         }
         .footer-column ul {
             list-style: none;
             padding: 0;
         }
         .footer-column ul li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .footer-column ul li a {
-            color: #fff;
+            color: var(--text-color-light);
             text-decoration: none;
             transition: color 0.3s;
         }
         .footer-column ul li a:hover {
-            color: #f4a62a; /* Gold color on hover */
+            color: var(--secondary-color);
         }
         .footer-bottom {
             text-align: center;
             margin-top: 20px;
-            font-size: 14px;
+            font-size: 0.9rem;
             border-top: 1px solid #444;
             padding-top: 10px;
         }
         .footer-bottom a {
-            color: #ffd700;
+            color: var(--secondary-color);
             text-decoration: none;
         }
         .footer-bottom a:hover {
             text-decoration: underline;
         }
+
+        /* Utility Pop-ups (WhatsApp, Scroll) */
+        .whatsapp-popup {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-popup img {
+            width: 50px; /* Slightly larger icon */
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+        .whatsapp-popup:hover {
+            transform: scale(1.1);
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 90px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px; /* Fixed size */
+            height: 45px;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            line-height: 45px; /* Center the arrow */
+            text-align: center;
+            transition: opacity 0.3s, background-color 0.3s;
+            opacity: 0; /* Hidden by default via JS */
+            pointer-events: none;
+        }
+        .scroll-to-top.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .scroll-to-top:hover {
+            background-color: #0056b3;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000; /* Higher z-index for modal */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .modal-content {
+            margin: 5% auto; /* Adjusted margin */
+            background: var(--light-bg);
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            max-height: 90vh; /* Use max-height for responsiveness */
+            padding: 30px; /* Increased padding */
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            text-align: left;
+            color: var(--text-color-dark);
+            overflow-y: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .modal-content h2 {
+            color: var(--primary-color);
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 36px; /* Larger close button */
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close:hover {
+            color: #555;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1000px) {
+            .card-content {
+                flex-direction: column;
+            }
+            .card-text {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .card-image, .card-video {
+                max-width: 80%;
+            }
+        }
         @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            nav {
+                flex-wrap: wrap;
+            }
+            nav a {
+                margin: 5px 10px;
+            }
             .footer-container {
                 flex-direction: column;
                 align-items: center;
@@ -215,537 +391,550 @@
             .footer-column {
                 text-align: center;
             }
+            .scroll-to-top {
+                right: 20px; /* Move closer to WhatsApp button */
+                bottom: 90px;
+            }
+            .whatsapp-popup {
+                bottom: 20px;
+                right: 20px;
+            }
+            .modal-content {
+                width: 90%;
+            }
         }
-
-        .whatsapp-popup {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-        }
-        .whatsapp-popup img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-        .whatsapp-popup:hover {
-           background-color: #20b358; /* Slightly darker green */
-		   border-radius:50%;
-        }
-
-        .scroll-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 80px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            padding: 15px;
-            cursor: pointer;
-            font-size: 18px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            display: none
-            width: 40px;
-            height: 40px;
-        }
-        .scroll-to-top:hover {
-            background-color: #0056b3;
-        }
-	.modal {
-	    display: none; /* Hidden by default */
-	    position: fixed;
-	    z-index: 1000;
-	    left: 0;
-	    top: 0;
-	    width: 100%;
-	    height: 100%;
-	    background-color: rgba(0, 0, 0, 0.5);
-	}
-	.modal-content {         /* Modal content box */
-            margin: 20px auto;
-            background: #F3F3F3;  /* light gray color for card background*/
-            border: 2px solid #ddd;
-            border-radius: 15px;
-	    height: 80vh; /* Set a fixed height */
-	    padding: 20px;
-	    width: 60%;
-	    position: relative;
-	    text-align: left;
-	    color: black;  /* Ensures text inside modal is black */
-	    overflow-y: auto; /* Enables vertical scrolling if content is long */
-	}
-	.close {            /* Close button (Top Right Corner) */
-	    position: absolute;
-	    top: 10px;
-	    right: 15px;
-	    font-size: 30px;
-	    font-weight: bold;
-	    cursor: pointer;
-	}
-	.close:hover {
-	    color: red;
-	}
-	    
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const sections = document.querySelectorAll(".section");
+            const sections = document.querySelectorAll(".content-section");
             const navLinks = document.querySelectorAll("nav a");
+            const scrollToTopBtn = document.getElementById("scrollBtn");
+            const privacyModal = document.getElementById('privacyModal');
+            const closeModal = document.querySelector('.modal .close');
 
-            navLinks.forEach((link, index) => {
+            // --- Section Switching Logic (Click Handler) ---
+            navLinks.forEach((link) => {
                 link.addEventListener("click", (e) => {
                     e.preventDefault();
+                    
+                    // Get the target section ID (e.g., #home, #about)
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
 
+                    // 1. Deactivate all sections and links
                     sections.forEach(section => section.classList.remove("active"));
                     navLinks.forEach(nav => nav.classList.remove("active"));
 
-                    sections[index].classList.add("active");
+                    // 2. Activate the target section and link
+                    if (targetSection) {
+                        targetSection.classList.add("active");
+                    }
                     link.classList.add("active");
 
-                    // Scroll to the top of the page
-                    window.scrollTo(0, 0);
+                    // 3. Scroll to the top of the content area
+                    window.scrollTo({
+                        top: 0, 
+                        behavior: 'smooth'
+                    });
                 });
             });
 
             // Show the first section by default
-            sections[0].classList.add("active");
-            navLinks[0].classList.add("active");
-        })
+            const homeLink = document.querySelector('nav a[href="#home"]');
+            const homeSection = document.getElementById('home');
+            if (homeSection) homeSection.classList.add("active");
+            if (homeLink) homeLink.classList.add("active");
+
+
+            // --- Scroll-to-Top Logic ---
+            const toggleScrollButton = () => {
+                if (window.scrollY > 100) {
+                    scrollToTopBtn.classList.add("show");
+                } else {
+                    scrollToTopBtn.classList.remove("show");
+                }
+            };
+
+            window.addEventListener("scroll", () => {
+                window.requestAnimationFrame(toggleScrollButton);
+            });
+
+            scrollToTopBtn.onclick = function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+
+            // --- Modal Logic ---
+            // Show modal via link in footer (original logic retained)
+            // The onclick in the HTML handles showing the modal: document.getElementById('privacyModal').style.display='block'
+
+            // Hide modal via close button
+            closeModal.onclick = function() {
+                privacyModal.style.display = 'none';
+            }
+
+            // Hide modal if user clicks outside of it
+            window.addEventListener('click', (event) => {
+                if (event.target == privacyModal) {
+                    privacyModal.style.display = 'none';
+                }
+            });
+
+            // --- Active Nav Link on Scroll Logic (Simplified and improved) ---
+            const sectionsForScroll = document.querySelectorAll('.content-section');
+            const navLinksMap = new Map();
+            navLinks.forEach(link => {
+                const id = link.getAttribute('href').substring(1);
+                const section = document.getElementById(id);
+                if (section) {
+                    navLinksMap.set(section, link);
+                }
+            });
+            
+            const setActiveNavLink = () => {
+                let currentActiveSection = null;
+                const buffer = 150; // Buffer for when the section is considered 'in view'
+
+                sectionsForScroll.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    // Check if the section's top is in view or just slightly above the top
+                    if (rect.top <= buffer && rect.bottom > buffer) {
+                        currentActiveSection = section;
+                    }
+                });
+
+                navLinks.forEach(link => link.classList.remove('active'));
+                if (currentActiveSection) {
+                    navLinksMap.get(currentActiveSection).classList.add('active');
+                } else {
+                    // Fallback for when at very top or very bottom
+                    if (window.scrollY < 50 && homeLink) {
+                         homeLink.classList.add('active');
+                    }
+                }
+            };
+            
+            // Only attach scroll listener if there are multiple sections
+            if (sectionsForScroll.length > 1) {
+                window.addEventListener('scroll', () => {
+                    window.requestAnimationFrame(setActiveNavLink);
+                });
+            }
+            
+            // Initial call to set active link
+            setActiveNavLink();
+        });
     </script>
 </head>
-
-
-
 
 <body>
     <div class="background"></div>
 
-
-    <!-- WhatsApp Pop-up -->
-    <a href="https://wa.me/+919871137235?text=Hi, I would like to know more about your services!" 
-       target="_blank" 
-       class="whatsapp-popup">
-        <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/WhatsAppIcon.jpg" alt="WhatsApp">
+    <a href="https://wa.me/+919871137235?text=Hi, I would like to know more about your services!"
+        target="_blank"
+        class="whatsapp-popup"
+        aria-label="Chat with us on WhatsApp">
+        <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/WhatsAppIcon.jpg" alt="WhatsApp Icon">
     </a>
 
-
     <header>
-        <h1 style="font-size: 4rem; font-weight: bold;"><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="ACA Innovators Logo" width="105" height="auto"> ACA Innovators</h1>
+        <h1><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="ACA Innovators Logo" width="105" height="auto"> ACA Innovators</h1>
         <p>Your Trusted Partner in Mechanical Design</p>
     </header>
 
-
     <nav>
-        <a href="#"Home="active"><strong>Home</strong></a>
-        <a href="#AboutUs"><strong>About Us</strong></a>
+        <a href="#home" class="active"><strong>Home</strong></a>
+        <a href="#about"><strong>About Us</strong></a>
         <a href="#projects"><strong>Projects</strong></a>
         <a href="#services"><strong>Services</strong></a>
         <a href="#testimonials"><strong>Testimonials</strong></a>
         <a href="#message"><strong>Message</strong></a>
     </nav>
 
-    <div id="home" class="section">
-
-        <div class="card">
-             <h3>Cutting Edge Solutions For Your Mechanical Engineering Needs</h3>
-	     <div class="card-content">
- 	            <div class="card-text">
-                    	<p>At ACA Innovators, we specialize in CAD-CAM-CAE solutions that optimize designs, streamline processes, and drive innovation. Using cutting-edge tools and the latest technologies, we offer high-precision 2D drafting, 3D modeling, simulation, and prototyping to help businesses reduce costs, optimize resources, and maximize profitability. Our expertise spans across industries such as automation, medical devices, consumer electronics, robotics, manufacturing, and marine engineering, ensuring tailored solutions for unique needs.</p>
-                    	<p>With a commitment to quality, precision, and innovation, ACA Innovators helps businesses bring ideas to life, improve efficiency, and achieve engineering excellence. Let’s collaborate to transform your vision into reality.</p>
-	            </div>
+    <main>
+        <section id="home" class="content-section active">
+            <div class="card">
+                <h3>Cutting Edge Solutions For Your Mechanical Engineering Needs</h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>PH</p>
+                    </div>
                     <div class="card-video">
-                        <video autoplay loop muted playsinline>
+                        <video autoplay loop muted playsinline aria-label="3D model animation demonstrating mechanical design">
                             <source src="https://adityagithubgupta.github.io/WebsiteACAInnovators/VideoPlane.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
+                    </div>
                 </div>
-	     </div>
-        </div>
+            </div>
 
-	<section id="what-makes-us-different" style="background-color: #f4a62a; padding: 50px 0; text-align: center; color: white; border-radius: 15px;">
-	    <h2 style="font-size: 2rem; margin-bottom: 30px;">What makes us different</h2>
-    
-	    <div style="display: flex; justify-content: center; gap: 125px; flex-wrap: wrap; max-width: 1200px; margin: auto;">
-        
-	        <!-- Quality Output -->
-	        <div style="flex: 1; min-width: 250px; max-width: 300px;">
-	            <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/HomeQualityOutput.jpg" alt="Quality Output" style="width: 50px; border-radius: 10px;">
-	            <h3>Quality Output: Accuracy and Precision</h3>
-	            <p>We believe that exceptional quality should speak for itself, and we take pride in empowering our clients to showcase their outstanding work. This commitment to excellence is at the heart of everything we do. Through collaboration and expertise, we ensure that every project reflects the highest standards of engineering innovation.</p>
-	        </div>
+            <section id="what-makes-us-different">
+                <h2>What makes us different</h2>
+                <div style="display: flex; justify-content: center; gap: 125px; flex-wrap: wrap; max-width: 1200px; margin: auto;">
+                    <div style="flex: 1; min-width: 250px; max-width: 300px;">
+                        <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/HomeQualityOutput.jpg" alt="Quality Output Icon" style="width: 50px; border-radius: 10px;">
+                        <h3>Quality Output: Accuracy and Precision</h3>
+                        <p>PH</p>
+                    </div>
 
-	        <!-- Unique Design -->
-	        <div style="flex: 1; min-width: 250px; max-width: 300px;">
-	            <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/HomeUniqueDesign.jpg" alt="Unique Design" style="width: 50px; border-radius: 10px;">
-	            <h3>Unique Design: Customisable Output</h3>
-	            <p>The journey of creative design is endless, with constant opportunities for growth and innovation. We are dedicated to fostering an environment that encourages learning, problem-solving, and thinking beyond conventional boundaries. By embracing challenges and pushing limits, we strive to deliver exceptional engineering solutions that stand out.</p>
-	        </div>
+                    <div style="flex: 1; min-width: 250px; max-width: 300px;">
+                        <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/HomeUniqueDesign.jpg" alt="Unique Design Icon" style="width: 50px; border-radius: 10px;">
+                        <h3>Unique Design: Customisable Output</h3>
+                        <p>PH</p>
+                    </div>
 
-	        <!-- Dedication -->
-	        <div style="flex: 1; min-width: 250px; max-width: 300px;">
-	            <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/HomeDedication.jpg" alt="Dedication" style="width: 50px; border-radius: 10px;">
-	            <h3>Dedication: Fast Turnaround Time</h3>
-	            <p>As experienced designers, we understand the value of skilled craftsmanship and the critical role it plays in successful projects. Our team is committed to continuously improving and delivering innovative solutions to support our clients' needs with precision and dedication. With a focus on collaboration and excellence, we aim to bring your ideas to life efficiently and effectively.</p>
-	        </div>
-	    </div>
-	</section>
-
-    </div>
-
-
-
-
-    <div id="about" class="section">
-	<h2 style="font-size: 2rem; margin-bottom: 30px;">About Us</h2>               <!-- ABOUT US -->
-
-        <div class="card">
-             <h3>Committed to Excellence and Integrity</h3>
-	     <div class="card-content">
- 	            <div class="card-text">
-                <p>At ACA Innovators, we are driven by a steadfast commitment to excellence, integrity, and quality in all that we do. Our mission is to deliver exceptional CAD-CAM-CAE solutions that exceed client expectations while adhering to the highest ethical standards. Whether it’s the precision of our designs or the clarity of our communication, every aspect of our work reflects our dedication to building trust and delivering value to our clients and stakeholders.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesExcellence.jpg" alt="Committed to Excellence and Integrity" class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3>Global Reach, Tailored Expertise</h3>
-	     <div class="card-content">
- 	            <div class="card-text">
-                <p>With a strong presence in India and Europe, ACA Innovators provides cutting-edge design and engineering solutions across diverse industries, including automation, medical devices, consumer products, and manufacturing. Our global reach is supported by an understanding of regional needs, enabling us to offer tailored solutions that resonate with the challenges and goals of our clients.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesGlobalReach.jpg" alt="Global Reach, Tailored Expertise" class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3>Data Security You Can Rely On</h3>
-	     <div class="card-content">
- 	            <div class="card-text">
-                <p>Confidentiality and data security are at the core of our operations. We understand the critical importance of safeguarding proprietary information and intellectual property. To ensure absolute protection of our clients' data, we actively enter into Non-Disclosure Agreements (NDAs) and Confidentiality Agreements as required. This rigorous approach guarantees that all shared information remains secure and confidential throughout the project lifecycle.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/AboutUsPic3.jpg" alt="Data Security You Can Rely On" class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3>Cutting-Edge Solutions, Powered by Innovation</h3>
-	     <div class="card-content">
- 	            <div class="card-text">
-                <p>At ACA Innovators, our expertise in CAD-CAM-CAE is backed by state-of-the-art 3D designing, 2D designing and analysis tools. We specialize in providing solutions that span 3D modeling, 2D drafting, simulation, product design, prototyping, and manufacturing support. By combining technical excellence with innovative problem-solving, we address complex design and engineering challenges with efficiency and precision.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/AboutUsPic4.jpg" alt="Cutting-Edge Solutions, Powered by Innovation" class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-	     <h3>Our Vision for Success</h3>
-	     <div class="card-content">
- 	            <div class="card-text">
-                <p>ACA Innovators' journey is defined by an unwavering commitment to empowering businesses with superior mechanical engineering solutions. We aim to build long-lasting relationships founded on trust, collaboration, and mutual success. Every project we undertake reflects our dedication to quality, innovation, and delivering value, ensuring that our clients achieve their engineering and design goals with confidence.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/AboutUsVision.jpg" alt="Our Vision for Success" class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3>Multi Lingual Support</h3>
-	     <div class="card-content">
- 	            <div class="card-text">
-               	    	<p>At ACA Innovators, we believe in seamless communication with our clients. To better serve our diverse clientele, we offer business support in English, Hindi, and German. Whether you're in India, Europe, or beyond, our team ensures clear and efficient collaboration across languages.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/AboutUsMultiLingualSupport.jpg" alt="Multi Lingual Support" class="card-image">
-	     </div>
-        </div>
-    </div>
-
-
-
-
-
-	    <div id="projects" class="section">
-	<h2 style="font-size: 2rem; margin-bottom: 30px;">Projects</h2>               <!-- PROJECTS -->
-
-        <div class="card">                                                        <!-- Stability Platform -->
-             <h3>Stability Platform (upcoming)</h3>
-	     <div class="card-content">
- 	            <div class="card-text">
-                <p>Stability Platform content.</p>
-				<p>At ACA Innovators, we specialize in CAD-CAM-CAE solutions that optimize designs, streamline processes, and drive innovation. Using cutting-edge tools and the latest technologies, we offer high-precision 2D drafting, 3D modeling, simulation, and prototyping to help businesses reduce costs, optimize resources, and maximize profitability. Our expertise spans across industries such as automation, medical devices, consumer electronics, robotics, manufacturing, and marine engineering, ensuring tailored solutions for unique needs. With a commitment to quality, precision, and innovation, ACA Innovators helps businesses bring ideas to life, improve efficiency, and achieve engineering excellence. Let’s collaborate to transform your vision into reality.</p>
-				</div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/StabilityPlatform1.jpg" alt="StabilityPlatform1" class="card-image">
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/StabilityPlatform1.jpg" alt="StabilityPlatform1" class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">                                                        <!-- Safety Shuttle -->
-             <h3>Safety Shuttle for ASRS</h3>
-	     <div class="card-content">
- 	            <div class="card-text">
-				<p><strong>The Need:</strong> A Critical Safety and Operational Gap in ASRS</p>
-				<p>Modern Automated Storage and Retrieval Systems (ASRS) maximize space and speed, but they introduce a dangerous compromise during maintenance and repair work. This challenge creates an unacceptable trade-off between human safety and system productivity.</p>
-				<p><strong>The Unacceptable Risk:</strong></p>
-				<p><strong>Operator Vulnerability:</strong> Whenever maintenance or repair work requires an operator to enter the ASRS racks, their protection is limited to only a helmet and a harness.</p>
-				<p><strong>Fatal Danger:</strong> The operator is highly vulnerable to falling carton box(s), a threat that can prove to be fatal. The basic safety gear is inadequate for the environment.</p>
+                    <div style="flex: 1; min-width: 250px; max-width: 300px;">
+                        <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/HomeDedication.jpg" alt="Dedication Icon" style="width: 50px; border-radius: 10px;">
+                        <h3>Dedication: Fast Turnaround Time</h3>
+                        <p>PH</p>
+                    </div>
                 </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/SafetyShuttle1.jpg" alt="SafetyShuttle1" class="card-image">
-	     </div>
+            </section>
+        </section>
 
-		 <div class="card-content">
- 	            <div class="card-text">
-				<p><strong>The Operational Cost of Safety:</strong></p>
-				<p><strong>Mandatory Shutdown:</strong> To mitigate this risk, the entire ASRS system has to be shut down during the maintenance and repair work period.</p>
-				<p><strong>Long Downtime:</strong> This results in long and costly downtime for the entire operation, lasting until the operator is safely out of the ASRS racks. Safety, therefore, becomes a bottleneck to efficiency.</p>
+
+        <section id="about" class="content-section">
+            <h2>About Us</h2>
+
+            <div class="card">
+                <h3>Committed to Excellence and Integrity</h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>PH</p>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesExcellence.jpg" alt="Image representing commitment to excellence" class="card-image">
                 </div>
-			    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/SafetyShuttle2.jpg" alt="SafetyShuttle2" class="card-image">
-	     </div>	
+            </div>
 
-		 <div class="card-content">
- 	            <div class="card-text">
-				<p><strong>The Solution: Safety Shuttle by ACA Innovators</strong></p>
-				<p>The Safety Shuttle is a mobile safety solution developed by ACA Innovators to resolve the ASRS safety and downtime problem —without requiring any changes to your existing infrastructure.</p>
-				<p>The Safety Shuttle acts as an automated safety umbrella, ensuring the operator is protected from falling loads while minimizing the impact on the operational throughput.</p>
-			    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/SafetyShuttle3.jpg" alt="SafetyShuttle3" class="card-image">
-				
-				<p><strong>Project Outcome: Safety and Automation, Redefined</strong></p>
-				<p>The Safety Shuttle is a solution that achieves what the modern ASRS system was missing: a way to maintain human safety without interrupting automation.</p>
-				<p><strong>Enhanced Safety:</strong> Protects your most valuable asset—your people—by shielding them from falling loads.</p>
-                <p><strong>Minimal Down-Time:</strong> Allows for maintenance with minimal operational disruption, keeping your system highly efficient.</p>
-				<p><strong>No Infrastructure Changes:</strong> Requires no modifications to the existing ASRS structure, allowing for quick and seamless adoption.</p>
-				<p><strong>Boosted Morale:</strong> Reduces injury risks and legal liabilities while boosting operator confidence and morale.</p>
-				</div>                      
-			 			<video autoplay loop muted playsinline>
+            <div class="card">
+                <h3>Global Reach, Tailored Expertise</h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>PH</p>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesGlobalReach.jpg" alt="Image representing global reach and expertise" class="card-image">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Data Security You Can Rely On</h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>PH</p>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/AboutUsPic3.jpg" alt="Image representing data security and privacy" class="card-image">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Cutting-Edge Solutions, Powered by Innovation</h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>PH</p>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/AboutUsPic4.jpg" alt="Image representing cutting-edge technology and innovation" class="card-image">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Our Vision for Success</h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>PH</p>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/AboutUsVision.jpg" alt="Image representing a clear vision for success" class="card-image">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Multi Lingual Support</h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>PH</p>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/AboutUsMultiLingualSupport.jpg" alt="Image representing multilingual support" class="card-image">
+                </div>
+            </div>
+        </section>
+
+
+        <section id="projects" class="content-section">
+            <h2>Projects</h2>
+
+            <div class="card"> <h3>Stability Platform (upcoming)</h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>Stability Platform content.</p>
+                        <p>PH</p>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/StabilityPlatform1.jpg" alt="Render of the Stability Platform design" class="card-image">
+                    </div>
+            </div>
+
+            <div class="card"> <h3>Safety Shuttle for ASRS</h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p><strong>The Need:</strong> A Critical Safety and Operational Gap in ASRS</p>
+                        <p>PH</p>
+                        <p><strong>The Unacceptable Risk:</strong></p>
+                        <p><strong>Operator Vulnerability:</strong> PH</p>
+                        <p><strong>Fatal Danger:</strong> PH</p>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/SafetyShuttle1.jpg" alt="Illustration of ASRS risk scenario" class="card-image">
+                </div>
+
+                <div class="card-content">
+                    <div class="card-text">
+                        <p><strong>The Operational Cost of Safety:</strong></p>
+                        <p><strong>Mandatory Shutdown:</strong> PH</p>
+                        <p><strong>Long Downtime:</strong> PH</p>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/SafetyShuttle2.jpg" alt="Illustration of ASRS system downtime" class="card-image">
+                </div>
+
+                <div class="card-content">
+                    <div class="card-text">
+                        <p><strong>The Solution: Safety Shuttle by ACA Innovators</strong></p>
+                        <p>PH</p>
+                        <p>PH</p>
+                        <p><strong>Project Outcome: Safety and Automation, Redefined</strong></p>
+                        <p>PH</p>
+                        <p><strong>Enhanced Safety:</strong> PH</p>
+                        <p><strong>Minimal Down-Time:</strong> PH</p>
+                        <p><strong>No Infrastructure Changes:</strong> PH</p>
+                        <p><strong>Boosted Morale:</strong> PH</p>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/SafetyShuttle3.jpg" alt="Render of the Safety Shuttle final design" class="card-image" style="margin-right: 20px;">
+                    <div class="card-video">
+                        <video autoplay loop muted playsinline aria-label="Animation of Safety Shuttle in operation">
                             <source src="https://adityagithubgupta.github.io/WebsiteACAInnovators/SafetyShuttleVideo1.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-
-	     </div>					
-        </div>
-    </div>
-
-
-
-
-
-    <div id="services" class="section">
-	<h2 style="font-size: 2rem; margin-bottom: 30px;">Our Services</h2>               <!-- OUR SERVICES -->
-
-	 <!-- <p>At ACA Innovators, we pride ourselves on delivering cutting-edge mechanical engineering solutions tailored to your unique needs. Our services span a broad range of expertise, from CAD modeling to advanced analysis and rapid prototyping, ensuring comprehensive support for every stage of your product development journey.</p> -->
-
-        <div class="card">
-             <h3>CAD Conversions</h3>
-	     <p>Simplify design updates, streamline workflows, and improve project accuracy with our reliable and efficient CAD conversion services. Whether you're digitizing old drawings, transitioning between software, or standardizing file formats, we ensure precision and quality every step of the way.</p>
-	     <div class="card-content">
- 	            <div class="card-text">
-                    	<p>Our CAD Conversion Services</p>
-                    	<p><strong>Image to CAD Conversion:</strong> Transform low-detail or conceptual images into highly accurate CAD models. Perfect for sketches, scanned documents, or raster images, this service enables engineers and designers to work with detailed, scalable, and editable CAD drawings.</p>
-                    	<p><strong>Paper to CAD Conversion:</strong> Modernize your legacy documentation by digitizing paper-based designs into precise CAD files. We meticulously recreate dimensions, annotations, and details, ensuring every element is captured for seamless integration into modern workflows.</p>
-                    	<p><strong>PDF to CAD Conversion:</strong> Convert static PDF files into fully editable CAD designs. This service is ideal for making design modifications, adding new features, or updating layouts without starting from scratch.</p>
-                    	<p><strong>CAD to CAD Conversion:</strong> Streamline collaboration and compatibility by adapting files between different CAD formats. Whether transitioning between software platforms or meeting specific client requirements, we ensure file integrity, proper scaling, and format compatibility.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesCadConversion.jpg" alt="CAD Conversions" class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3>Concept Design</h3>
-	     <p>Transform your ideas into reality with our innovative concept design services. We help you visualize and refine your concepts, providing a strong foundation for development. Whether you’re working on a new product, component, or system, our creative and technical expertise ensures your vision is accurately captured and tailored to your goals.</p>
-	     <div class="card-content">
- 	            <div class="card-text">
-                    	<p>Our Concept Design Services:</p>
-                    	<p><strong>Conceptual Designs:</strong> We bring your ideas to life through initial sketches, 3D models, and visualizations. By capturing the essence of your vision, we help you explore different design possibilities and refine your concept before committing to full-scale development. Whether it's a consumer product, a mechanical system, or an architectural design, we ensure your concept stands out with creativity and functionality.</p>
-                    	<p><strong>Sheet Metal Enclosure Product Designs:</strong> Specializing in sheet metal enclosure designs, we focus on creating innovative and functional solutions for your products. From electronics housing to industrial enclosures, we design for manufacturability, ensuring optimal use of materials, efficient fabrication processes, and ease of assembly. Our designs balance strength, aesthetics, and cost-effectiveness to meet your requirements.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesConceptDesign.jpg" alt="Concept Design"  class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3>CAD Modeling</h3>
-                    	<p>Unlock the potential of your designs with our expert CAD modeling services. We deliver precise and versatile CAD models tailored to your project needs. From concept to production, our expertise spans multiple modeling techniques, ensuring designs are robust and manufacturable.</p>
-	     <div class="card-content">
- 	            <div class="card-text">
-                    	<p>Our Mechanical CAD modeling Services:</p>
-                    	<p><strong>Solid Modeling:</strong> We craft 3D solid models with a focus on functional and structural integrity. These models provide accurate representations of your products, allowing for detailed analysis, simulation, and testing. Solid modeling is perfect for designing parts and assemblies that require precision and high-performance standards.</p>
-                    	<p><strong>Surface Modeling:</strong> Our surface modeling services cater to projects requiring intricate, smooth, and aesthetically appealing designs. This technique is ideal for creating complex geometries, ergonomic shapes, and visually striking designs, often used in consumer electronics, automotive exteriors, and medical devices.</p>
-                    	<p><strong>Assembly Modeling:</strong> We create complete assemblies that simulate the precise interaction of components in your design. Our assembly models ensure that parts fit together seamlessly, function correctly, and are easy to assemble or disassemble during production or maintenance. This is especially useful for machinery, robotics, and multi-component products.</p>
-                    	<p><strong>Bill of Materials (BOM):</strong> Alongside detailed CAD models, we provide comprehensive Bills of Materials (BOM) for production. Our BOM includes a complete list of materials, components, quantities, and specifications, streamlining procurement and manufacturing processes.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesWireframeModeling.jpg" alt="CAD Modeling"  class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3>Prototype Design and Engineering</h3>
-                    	<p>We transform ideas into tangible prototypes, helping you bridge the gap between concept and production. Our prototyping services enable rapid iteration, functional testing, and design validation to ensure a smooth transition to manufacturing.</p>
-	     <div class="card-content">
- 	            <div class="card-text">
-                    	<p>Our Mechanical CAD modeling Services:</p>
-                    	<p><strong>Proof-of-Concept Prototype:</strong> Early-stage models designed to validate feasibility, design intent, and core functionality. Ideal for refining ideas before investing in full-scale development.</p>
-                    	<p><strong>Functional Prototype:</strong> Fully working prototypes that simulate real-world performance, allowing for hands-on testing, engineering validation, and design optimization. Used for mechanical testing, user feedback, and product improvements.</p>
-                    	<p><strong>Visual Prototype:</strong> High-fidelity models showcasing design aesthetics, form, and ergonomics. Perfect for investor presentations, marketing, and stakeholder demonstrations before mass production.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesPrototype.jpg" alt="Prototype Design and Engineering"  class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3>3D Product Animation</h3>
-	     <p>Bring your designs to life with our professional 3D animations, crafted for technical, industrial, and marketing applications. Whether you need to demonstrate functionality, explain complex mechanisms, or create stunning visual presentations, our animations enhance clarity and engagement.</p>
-	     <div class="card-content">
- 	            <div class="card-text">
-                    	<p>Our Mechanical CAD modeling Services:</p>
-                    	<p><strong>Basic 3D Animation:</strong> Simple yet effective animations showcasing key product features, ideal for marketing and concept demonstrations.</p>
-                    	<p><strong>Technical Animation:</strong> Detailed animations illustrating complex technical concepts, assembly processes, or mechanical movements for training and engineering purposes.</p>
-                    	<p><strong>Industrial Animation:</strong> Visualizations tailored for industrial applications, including manufacturing workflows, automation processes, and large-scale machinery demonstrations.</p>
-                    	<p><strong>Hyper-Realistic Animations:</strong> High-fidelity, photorealistic animations that create immersive and impactful presentations for investors, clients, and product launches.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesAnimation.jpg" alt="3D Product Animation"  class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3>Rapid Prototyping</h3>
-	     <p>Accelerate your product development with our advanced rapid prototyping services, delivering speed, precision, and efficiency. We help you validate designs, test functionality, and refine products before full-scale production.</p>
-	     <div class="card-content">
- 	            <div class="card-text">
-                    	<p>Our Mechanical CAD modeling Services:</p>
-                    	<p><strong>3D Printing PrototypingAnimation:</strong> Fast and cost-effective prototypes using additive manufacturing. Perfect for concept models, design validation, and rapid iterations. Supports a variety of materials and complex geometries.</p>
-                    	<p><strong>Sheet Metal Prototyping:</strong> Functional prototypes crafted from sheet metal, designed for real-world testing and manufacturability. Used for enclosures, brackets, and structural components.</p>
-                    	<p><strong>CNC Prototyping:</strong> High-precision prototypes machined from metal or plastic, ensuring durability, tight tolerances, and manufacturability. Ideal for functional testing and engineering validation.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesRapidPrinting.jpg" alt="Rapid Prototyping"  class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3>Finite Element Analysis</h3>
-	     <p>Enhance product reliability and performance with our advanced Finite Element Analysis (FEA) services. We help predict how your designs will respond to real-world conditions, enabling informed engineering decisions and reducing development risks.</p>
-	     <div class="card-content">
- 	            <div class="card-text">
-                    	<p>Our Mechanical CAD modeling Services:</p>
-                    	<p><strong>Stress / Structural Analysis:</strong> Evaluates stress distribution, deformation, and load-bearing capacity to ensure structural integrity and safety.</p>
-                    	<p><strong>Static Analysis:</strong> Assesses how components perform under steady loads, identifying potential weak points and optimizing material usage.</p>
-                    	<p><strong>Linear Analysis:</strong> Simulates material behavior under small deformations, providing accurate results for standard engineering applications.</p>
-                    	<p><strong>Dynamic Analysis:</strong> Examines time-dependent forces such as vibrations, impacts, and cyclic loading to improve durability and performance.</p>
-                    	<p><strong>Thermal Analysis:</strong> Analyzes heat distribution, thermal stresses, and material responses to temperature changes, essential for electronics, engines, and industrial systems.</p>
-                    	<p><strong>CFD (Computational Fluid Dynamics) Analysis:</strong> Simulates fluid flow, pressure distribution, heat transfer, and aerodynamics to optimize designs for efficiency and performance.</p>
-                    	<p><strong>Design Optimization:</strong> Refines product designs by balancing strength, weight, material selection, and cost for enhanced efficiency and manufacturability.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesFEA.jpg" alt="Finite Element Analysis"  class="card-image">
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3>Manufacturing Support</h3>
-	     <p>Enhance product reliability and performance with our advanced Finite Element Analysis (FEA) services. We help predict how your designs will respond to real-world conditions, enabling informed engineering decisions and reducing development risks.</p>
-	     <div class="card-content">
- 	            <div class="card-text">
-                    	<p>Our Mechanical CAD modeling Services:</p>
-                    	<p><strong>3D Printing:</strong> Rapid prototyping and low-volume production with precise, cost-effective additive manufacturing solutions.</p>
-                    	<p><strong>Sheet Metal Fabrication:</strong> Design optimization for bending, cutting, and forming sheet metal components, ensuring structural integrity and manufacturability.</p>
-                    	<p><strong>Welding:</strong> Simulation and validation of weld joints to enhance strength, durability, and performance under real-world conditions.</p>
-                    	<p><strong>Machining:</strong> Optimized designs for CNC milling, turning, and other machining processes, ensuring efficiency and accuracy.</p>
-                    	<p><strong>Assembly Support:</strong> Analysis of fit, tolerances, and manufacturability to ensure seamless component integration and efficient assembly workflows.</p>
-                    	<p><strong>Injection Molding:</strong> Design validation for plastic molding processes, focusing on material flow, shrinkage, and defect prevention.</p>
-                    	<p><strong>Die Punching:</strong> Precision-driven support for stamping and punching processes, optimizing tooling and minimizing material waste.</p>
-                    	<p><strong>Casting:</strong> Design refinement for metal casting processes, ensuring optimal flow, solidification, and defect-free production.</p>
-	            </div>
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesManufacturing.jpg" alt="Manufacturing Support"  class="card-image">
-	     </div>
-        </div>
-    </div>
-
-
-
-
-
-    <div id="testimonials" class="section">
-	<h2 style="font-size: 2rem; margin-bottom: 30px;">What Our Clients Say</h2>               <!-- TESTIMONIALS -->
-
-        <div class="card">
-             <h3><a href="https://svastir.ventures/" target="_blank">Svastir Ventures</a></h3>           <!-- ClientName1 -->
-	     <div class="card-content">
- 	            <div class="card-text">
-        	    	<p>"I had an outstanding experience collaborating with ACA Innovators as part of my investment in BizGears, focused on building AI hubs for MSME businesses. ACA Innovators played a pivotal role in 3D modeling, concept creation, and converting 2D designs into production-ready 3D models, enabling the seamless development of our AI-powered infrastructure. Their technical expertise, precision, and ability to transform complex ideas into high-quality designs exceeded my expectations. Throughout the engagement, they maintained clear communication, adhered to strict timelines, and demonstrated a deep understanding of our vision. Their contributions were instrumental in advancing BizGears' mission. I highly recommend their services!"</p>
-        	    	<p><strong>- Pankaj Khare</strong> </p>
-	            </div>
-		    <a href="https://svastir.ventures/" target="_blank">
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialSvastirVentures.jpg" alt="Client Svastir Ventures" class="card-image">
-		    </a>
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3><a href="https://www.taxitur.no/" target="_blank">TAXITUR</a></h3>           <!-- ClientName2 -->
-	     <div class="card-content">
- 	            <div class="card-text">
-        	    	<p>"We used ACA Inovators for our design project "Hydro ProwerCraft". Such a capable and pleasant supplier and partner would be hard to find. Despite distances of 6283.9 km, or 13.5 hours by plane, a few short messages/ meetings were all that was needed. All phases were delivered according to agreement, punctually. Payments were also in line with expectations. That is, professional all the way."</p>
-        	    	<p><strong>- Jarle Tungeland</strong> </p>
-	            </div>
-		    <a href="https://www.taxitur.no/" target="_blank">
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.jpg" alt="Client Taxitur" class="card-image">
-		    </a>
-	     </div>
-        </div>
-
-        <div class="card">
-             <h3><a href="https://pragaticonveyors.com/" target="_blank">Pragati Industries</a></h3>           <!-- ClientName3 -->
-	     <div class="card-content">
- 	            <div class="card-text">
-        		<p>"Highly impressed with ACA Innovators! Worked on optimizing and designing conveyor layouts in CAD for various industries. The professionalism and timely updates made the process seamless. Impressed!!"</p>
-        	    	<p><strong>- Utkarsh Agarwal</strong> </p>
-	            </div>
-		    <a href="https://pragaticonveyors.com/" target="_blank">
-                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialPragatiIndustries.jpg" alt="Client Pragati Industries" class="card-image">
-		    </a>
-	     </div>
-        </div>
-
-    </div>
-
-
-
-
-
-    <div id="message" class="section">
-	<h2 style="font-size: 2rem; margin-bottom: 30px;">Message Us</h2>               <!-- MESSAGE US -->
-
-           <div class="message">
-                <div class="message-form">
-		    <p>Would you like to speak to one of our Engineers over the phone?</p>
-		    <p>Just submit your details and we'll be in touch shortly.</p>
-
-                    <form action="https://formcarry.com/s/VDJoxL3ItuM" method="POST">
-                        <label for="name"><strong>Name:</strong></label>
-                        <input type="text" id="name" name="name" required>
-
-                        <label for="organisation"><strong>Organisation (*Optional):</strong></label>
-                        <input type="organisation" id="organisation" name="organisation">
-
-                        <label for="email"><strong>Email:</strong></label>
-                        <input type="email" id="email" name="email" required>
-
-                        <label for="phone"><strong>Phone:</strong></label>
-                        <input type="phone" id="phone" name="phone" required>
-
-                        <label for="message"><strong>Message:</strong></label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-
-                        <button type="submit">Submit</button>
-                    </form>
+                    </div>
                 </div>
-	    </div>
-    </div>
+            </div>
+        </section>
 
-    <footer class="footer">                                                 <!-- FOOTER -->
+
+        <section id="services" class="content-section">
+            <h2>Our Services</h2>
+
+            <div class="card">
+                <h3>CAD Conversions</h3>
+                <p>PH</p>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>Our CAD Conversion Services:</p>
+                        <ul>
+                            <li><strong>Image to CAD Conversion:</strong> PH</li>
+                            <li><strong>Paper to CAD Conversion:</strong> PH</li>
+                            <li><strong>PDF to CAD Conversion:</strong> PH</li>
+                            <li><strong>CAD to CAD Conversion:</strong> PH</li>
+                        </ul>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesCadConversion.jpg" alt="Illustration of CAD conversion process" class="card-image">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Concept Design</h3>
+                <p>PH</p>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>Our Concept Design Services:</p>
+                        <ul>
+                            <li><strong>Conceptual Designs:</strong> PH</li>
+                            <li><strong>Sheet Metal Enclosure Product Designs:</strong> PH</li>
+                        </ul>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesConceptDesign.jpg" alt="Illustration of product concept design" class="card-image">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>CAD Modeling</h3>
+                <p>PH</p>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>Our Mechanical CAD modeling Services:</p>
+                        <ul>
+                            <li><strong>Solid Modeling:</strong> PH</li>
+                            <li><strong>Surface Modeling:</strong> PH</li>
+                            <li><strong>Assembly Modeling:</strong> PH</li>
+                            <li><strong>Bill of Materials (BOM):</strong> PH</li>
+                        </ul>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesWireframeModeling.jpg" alt="Illustration of CAD wireframe modeling" class="card-image">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Prototype Design and Engineering</h3>
+                <p>PH</p>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>Our Prototype Design and Engineering Services:</p>
+                        <ul>
+                            <li><strong>Proof-of-Concept Prototype:</strong> PH</li>
+                            <li><strong>Functional Prototype:</strong> PH</li>
+                            <li><strong>Visual Prototype:</strong> PH</li>
+                        </ul>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesPrototype.jpg" alt="Illustration of a functional prototype" class="card-image">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>3D Product Animation</h3>
+                <p>PH</p>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>Our 3D Product Animation Services:</p>
+                        <ul>
+                            <li><strong>Basic 3D Animation:</strong> PH</li>
+                            <li><strong>Technical Animation:</strong> PH</li>
+                            <li><strong>Industrial Animation:</strong> PH</li>
+                            <li><strong>Hyper-Realistic Animations:</strong> PH</li>
+                        </ul>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesAnimation.jpg" alt="Illustration of 3D product animation" class="card-image">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Rapid Prototyping</h3>
+                <p>PH</p>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>Our Rapid Prototyping Services:</p>
+                        <ul>
+                            <li><strong>3D Printing Prototyping:</strong> PH</li>
+                            <li><strong>Sheet Metal Prototyping:</strong> PH</li>
+                            <li><strong>CNC Prototyping:</strong> PH</li>
+                        </ul>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesRapidPrinting.jpg" alt="Illustration of rapid prototyping methods" class="card-image">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Finite Element Analysis</h3>
+                <p>PH</p>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>Our Finite Element Analysis (FEA) Services:</p>
+                        <ul>
+                            <li><strong>Stress / Structural Analysis:</strong> PH</li>
+                            <li><strong>Static Analysis:</strong> PH</li>
+                            <li><strong>Linear Analysis:</strong> PH</li>
+                            <li><strong>Dynamic Analysis:</strong> PH</li>
+                            <li><strong>Thermal Analysis:</strong> PH</li>
+                            <li><strong>CFD (Computational Fluid Dynamics) Analysis:</strong> PH</li>
+                            <li><strong>Design Optimization:</strong> PH</li>
+                        </ul>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesFEA.jpg" alt="Illustration of Finite Element Analysis stress plot" class="card-image">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Manufacturing Support</h3>
+                <p>PH</p>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>Our Manufacturing Support Services:</p>
+                        <ul>
+                            <li><strong>3D Printing:</strong> PH</li>
+                            <li><strong>Sheet Metal Fabrication:</strong> PH</li>
+                            <li><strong>Welding:</strong> PH</li>
+                            <li><strong>Machining:</strong> PH</li>
+                            <li><strong>Assembly Support:</strong> PH</li>
+                            <li><strong>Injection Molding:</strong> PH</li>
+                            <li><strong>Die Punching:</strong> PH</li>
+                            <li><strong>Casting:</strong> PH</li>
+                        </ul>
+                    </div>
+                    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesManufacturing.jpg" alt="Illustration of various manufacturing processes" class="card-image">
+                </div>
+            </div>
+        </section>
+
+
+        <section id="testimonials" class="content-section">
+            <h2>What Our Clients Say</h2>
+
+            <div class="card"> <h3><a href="https://svastir.ventures/" target="_blank" aria-label="Visit Svastir Ventures website">Svastir Ventures</a></h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>PH</p>
+                        <p><strong>- Pankaj Khare</strong> </p>
+                    </div>
+                    <a href="https://svastir.ventures/" target="_blank">
+                        <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialSvastirVentures.jpg" alt="Logo of Svastir Ventures" class="card-image">
+                    </a>
+                </div>
+            </div>
+
+            <div class="card"> <h3><a href="https://www.taxitur.no/" target="_blank" aria-label="Visit TAXITUR website">TAXITUR</a></h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>PH</p>
+                        <p><strong>- Jarle Tungeland</strong> </p>
+                    </div>
+                    <a href="https://www.taxitur.no/" target="_blank">
+                        <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.jpg" alt="Image of Jarle Tungeland" class="card-image">
+                    </a>
+                </div>
+            </div>
+
+            <div class="card"> <h3><a href="https://pragaticonveyors.com/" target="_blank" aria-label="Visit Pragati Industries website">Pragati Industries</a></h3>
+                <div class="card-content">
+                    <div class="card-text">
+                        <p>PH</p>
+                        <p><strong>- Utkarsh Agarwal</strong> </p>
+                    </div>
+                    <a href="https://pragaticonveyors.com/" target="_blank">
+                        <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialPragatiIndustries.jpg" alt="Logo of Pragati Industries" class="card-image">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="message" class="content-section">
+            <h2>Message Us</h2>
+
+            <div class="message-form">
+                <p>Would you like to speak to one of our Engineers over the phone?</p>
+                <p>Just submit your details and we'll be in touch shortly.</p>
+
+                <form action="https://formcarry.com/s/VDJoxL3ItuM" method="POST">
+                    <label for="name"><strong>Name:</strong></label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="organisation"><strong>Organisation (*Optional):</strong></label>
+                    <input type="text" id="organisation" name="organisation">
+
+                    <label for="email"><strong>Email:</strong></label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone"><strong>Phone:</strong></label>
+                    <input type="tel" id="phone" name="phone" required> <label for="message-text"><strong>Message:</strong></label>
+                    <textarea id="message-text" name="message" rows="5" required></textarea> <button type="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
         <div class="footer-container">
 
             <div class="footer-column">
                 <ul>
-                    <a href="https://acainnovators.in/" target="_blank">
-                    <li><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="ACA Innovators Logo" width="250" height="auto"></li>
-		    </a>			
+                    <a href="https://acainnovators.in/" target="_blank" aria-label="Visit ACA Innovators Website">
+                        <li><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="ACA Innovators Logo" width="200" height="auto"></li>
+                    </a>
                     <h3 style="font-size: 1.5rem;">Let's Innovate</h3>
                 </ul>
             </div>
@@ -753,43 +942,23 @@
             <div class="footer-column">
                 <h3>Services</h3>
                 <ul>
-                    <li>CAD Conversions</a></li>
-                    <li>Concept Design</a></li>
-                    <li>Prototype Design and Engineering</a></li>
-                    <li>3D Product Animation</a></li>
-                    <li>Rapid Prototyping</a></li>
-                    <li>Finite Element Analysis</a></li>
-                    <li>Manufacturing Support</a></li>
-<!-- Footer Column 
-                    <li><a href="#">CAD Conversions</a></li>
-                    <li><a href="#">Concept Design</a></li>
-                    <li><a href="#">Prototype Design and Engineering</a></li>
-                    <li><a href="#">3D Product Animation</a></li>
-                    <li><a href="#">Rapid Prototyping</a></li>
-                    <li><a href="#">Finite Element Analysis</a></li>
-                    <li><a href="#">Manufacturing Support</a></li>
--->
+                    <li>CAD Conversions</li>
+                    <li>Concept Design</li>
+                    <li>Prototype Design and Engineering</li>
+                    <li>3D Product Animation</li>
+                    <li>Rapid Prototyping</li>
+                    <li>Finite Element Analysis</li>
+                    <li>Manufacturing Support</li>
                 </ul>
             </div>
 
-<!-- Footer Column 
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Case Studies</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
--->
 
             <div class="footer-column">
                 <h3>Contact Us</h3>
                 <ul>
                     <li><strong>Email:</strong> aditya@acainnovators.in</li>
                     <li><strong>Phone:</strong> +91 98711 37235</li>
-                    <li><strong>Registered Address:</strong> ACA Innovators, A-57, DDA Sheds, Ma Anandmayee Marg, Okhla Phase 2, Okhla Industrial Area, New Delhi, India - 110020</li>
+                    <li><strong>Registered Address:</strong> PH</li>
                 </ul>
             </div>
         </div>
@@ -797,110 +966,19 @@
         <div class="footer-bottom">
             &copy; 2025 ACA Innovators. All Rights Reserved. | <a href="#" onclick="document.getElementById('privacyModal').style.display='block'">Privacy Policy</a>
 
-		<!-- Privacy Policy Modal -->
-		<div id="privacyModal" class="modal">
-		    <div class="modal-content">
-		        <!-- Close Button (Top Right Corner) -->
-		        <span class="close" 			onclick="document.getElementById('privacyModal').style.display='none'">&times;</span>
-	        
-		        <h2>Privacy Policy</h2>
-			<p>Last Updated: February 11, 2025</p>
-		        <b>1. Introduction</b>
-			<p>At ACA Innovators ("Company," "we," "our," or "us"), we respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we may collect, use, disclose, and safeguard your information when you visit our website acainnovators.in, contact us, or use our services.</p>
-			<p>By using our website or services, you acknowledge that you have read and understood this Privacy Policy. Choosing to continue to use our website means you AGREE to our Privary Policy terms.</p>
-			<b>2. Information We Collect</b>
-			<p>We may collect and process different types of information, including:</p>
-			<p><strong>2.1 Personal Information</strong>: We may collect personally identifiable information that you voluntarily provide, including but not limited to: Name, Email address, Phone number and Company name. Any other details provided through contact forms, email inquiries, or client registration.</p>
-			<p><strong>2.2 Technical and Usage Data</strong>: When you visit our website, we may collect certain information, such as: IP address; Browser type and version; Device information; Pages visited and time spent on the site; Cookies and tracking technologies (see Section 7).</p>
-			<p><strong>2.3 Project-Related Data</strong>: If you engage with us for consulting services, we may collect technical documents, CAD files, 2D/3D models, and other related information necessary for project execution. All such data is treated with strict confidentiality.</p>
-			<b>3. How We Use Your Information</b>
-			<p>We may use the collected information for the following purposes: to respond to inquiries and provide our consulting services; to communicate with you regarding projects, proposals, and support; to improve our website, services, and user experience; to comply with legal obligations, including contracts, invoices, and taxation requirements, for marketing purposes (only if you have provided explicit consent).</p>
-			<b>4. Data Sharing and Third Parties</b>
-			<p>We do not sell, rent, or trade your personal information. However, we may share your data in the following circumstances:</p>
-			<p><strong>Service Providers</strong>: We may share limited data with third-party service providers (e.g., website hosting, cloud storage, analytics) who assist us in operating our business. These providers are obligated to protect your information.</p>
-			<p><strong>Legal Compliance</strong>: We may disclose data if required by law, such as responding to a court order, legal request, or regulatory requirement.</p>
-			<p><strong>Confidentiality of Project Data</strong>: Any project-related data (CAD files, technical drawings, specifications) will only be shared with your explicit consent or as required for project completion under a signed agreement.</p>
-			<b>5. Data Security</b>
-			<p>We implement appropriate technical and organizational security measures to protect your data from unauthorized access, alteration, disclosure, or destruction. These measures include: Encryption of sensitive data; Secure access controls for internal personnel; Regular security audits and updates. However, no online transmission or storage system is 100% secure, and we cannot guarantee absolute security.</p>
-			<b>6. Data Retention</b>
-			<p>We may retain personal and project-related data for as long as needed or as mentioned in the signed agreement necessary to fulfill the purposes outlined in this policy or to comply with legal and regulatory obligations. If you wish to request data deletion, please contact us at aditya@acainnovators.in.</p>
-			<b>7. Cookies and Tracking Technologies</b>
-			<p>Our website may use cookies and similar tracking technologies to enhance user experience and analyze website traffic. You can manage cookie preferences through your browser settings.</p>
-			<b>8. Your Rights</b>
-			<p>If you are located in a jurisdiction with data protection laws (such as GDPR for the EU), you have the following rights:</p>
-			<p><strong>Right to Access</strong>: Request a copy of the data we hold about you.</p>
-			<p><strong>Right to Rectification</strong>: Request corrections to inaccurate or incomplete data.</p>
-			<p><strong>Right to Erasure</strong>: Request deletion of your data, subject to legal retention requirements.</p>
-			<p><strong>Right to Withdraw Consent</strong>: Opt out of marketing communications.</p>
-			<p><strong>Right to Restrict Processing</strong>: Limit the way we use your data.</p>
-			<p>To exercise these rights, please contact us at aditya@acainnovators.in.</p>
-			<b>9. International Data Transfers</b>
-			<p>If you are accessing our website from outside India, please be aware that your data may be transferred to and processed in India. We ensure adequate safeguards are in place to protect your data in compliance with applicable laws. If required under GDPR, we use Standard Contractual Clauses (SCCs) or other appropriate safeguards for cross-border data transfers.</p>
-			<b>10. Third-Party Links</b>
-			<p>Our website may contain links to third-party sites. We are not responsible for the privacy practices or content of these external websites. We encourage you to review their privacy policies before providing any personal information.</p>
-			<b>11. Children's Privacy</b>
-			<p>Our services are not intended for individuals under the age of 18. We do not knowingly collect personal data from children. If we become aware of such data collection, we will take steps to delete it immediately. If you believe we have collected data from a minor, please contact us at aditya@acainnovators.in.</p>
-			<b>12. Governing Law and Jurisdiction</b>
-			<p>This Privacy Policy shall be governed by and construed in accordance with the laws of New Delhi, India. Any disputes arising from this policy shall be subject to the exclusive jurisdiction of the courts of New Delhi, India.</p>
-			<b>13. Data Breach Notification</b>
-			<p>In the event of a data breach that may compromise your personal data, we will notify affected users as required by applicable laws and take immediate steps to mitigate the impact.</p>
-			<b>14. Policy Updates</b>
-			<p>We reserve the right to modify this Privacy Policy at any time. Changes will be posted on this page with an updated "Last Revised" date. We encourage you to review our Privacy Policy periodically.</p>
-			<b>15. Contact Information</b>
-			<p>If you have any questions about this Privacy Policy or how we handle your data, you may contact us at:</p>
-			<p>ACA Innovators</p>
-			<p>A-57, DDA Sheds, Ma Anandmayee Marg, Okhla Phase 2, Okhla Industrial Area, New Delhi, India - 110020</p>
-			<p>Contact: +91 98711-37235</p>
-			<p>Email: aditya@acainnovators.in</p>
-		    </div>
-		</div>
-	<p>"This is a homegrown website, built with passion!"</p>
+            <div id="privacyModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="document.getElementById('privacyModal').style.display='none'" role="button" tabindex="0" aria-label="Close Privacy Policy Modal">&times;</span>
+                    
+                    <h2>Privacy Policy</h2>
+                    <p>PH </p>
+                </div>
+            </div>
+            <p>"This is a homegrown website, built with passion!"</p>
         </div>
 
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollBtn">&#8593;</button>
-	
-    <script>
-        // Get the button
-        let scrollBtn = document.getElementById("scrollBtn");
-
-        // When the user scrolls down 100px from the top, show the button
-        window.onscroll = function() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                scrollBtn.style.display = "block";
-            } else {
-                scrollBtn.style.display = "none";
-            }
-        };
-
-        // When the user clicks the button, scroll to the top of the document
-        scrollBtn.onclick = function() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
-        };
-    </script>
-
-    <script>
-        // Add active class to the current navigation link based on scroll
-        document.addEventListener('DOMContentLoaded', () => {
-            const navLinks = document.querySelectorAll('nav a');
-
-            window.addEventListener('scroll', () => {
-                let fromTop = window.scrollY + 10;
-
-                navLinks.forEach(link => {
-                    const section = document.querySelector(link.getAttribute('href'));
-
-                    if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
-                        navLinks.forEach(link => link.classList.remove('active'));
-                        link.classList.add('active');
-                    }
-                });
-            });
-        });
-    </script>
-
+    <button class="scroll-to-top" id="scrollBtn" aria-label="Scroll to top">&#8593;</button>
 </body>
 </html>
