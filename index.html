@@ -135,30 +135,42 @@
             margin-right: 20px;
             text-align: left;
         }
-        .card-image {
-            flex: 1;
-            max-width: 300px; /* Adjusted max-width for better two-column layout */
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            object-fit: cover; /* Ensures images/videos scale nicely */
-        }
-		
-        .card-video {
-			flex: 1;
-            max-width: 300px; /* Adjusted max-width for better two-column layout */
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            object-fit: cover; /* Ensures images/videos scale nicely */
-            border: 2px solid #ddd;
-        }
+		.card-images-vertical {
+    		display: flex; /* Activate Flexbox */
+   			flex-direction: column; /* Stack children vertically */
+    		gap: 15px; /* Add some space between the stacked images */
+    
+   		 /* These styles make the vertical image container behave like the original single image */
+    		flex: 1;
+    		max-width: 300px;
+    		height: auto;
+    		align-items: center; /* Center the images within their column */
+	}
+
+		/* Updated image style for stacked images */
+	.card-image-stacked {
+   		 	width: 100%; /* Make each image fill the width of the vertical container (300px) */
+   		 	max-width: 100%; /* Ensure it doesn't exceed its parent's width */
+    		height: auto;
+    		border-radius: 15px;
+    		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    		object-fit: cover;
+	}		
+
         video {
             width: 100%;
-			max-width: 300px;
             height: auto;
             border-radius: 10px;
         }
+	.card-video-stacked {
+    		width: 100%; /* Match the width of the stacked images */
+    		max-width: 100%;
+    		height: auto;
+    		border-radius: 15px;
+    		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    		border: 2px solid #ddd; /* Maintain the border style for videos */
+    		overflow: hidden; /* Ensures video corners match container border-radius */
+	}		
 
         /* Home Section Styling */
         #what-makes-us-different {
@@ -382,9 +394,6 @@
                 margin-right: 0;
                 margin-bottom: 20px;
             }
-            .card-image, .card-video {
-                max-width: 80%;
-            }
         }
         @media (max-width: 768px) {
             header h1 {
@@ -574,12 +583,14 @@
                         <p>At ACA Innovators, we specialize in CAD-CAM-CAE solutions that optimize designs, streamline processes, and drive innovation. Using cutting-edge tools and the latest technologies, we offer high-precision 2D drafting, 3D modeling, simulation, and prototyping to help businesses reduce costs, optimize resources, and maximize profitability. Our expertise spans across industries such as automation, medical devices, consumer electronics, robotics, manufacturing, and marine engineering, ensuring tailored solutions for unique needs.</p>
                     	<p>With a commitment to quality, precision, and innovation, ACA Innovators helps businesses bring ideas to life, improve efficiency, and achieve engineering excellence. Let’s collaborate to transform your vision into reality.</p>
                     </div>
-                    <div class="card-video">
-                        <video autoplay loop muted playsinline aria-label="3D model animation demonstrating mechanical design">
-                            <source src="https://adityagithubgupta.github.io/WebsiteACAInnovators/VideoPlane.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
+					<div class="card-images-vertical">
+						<div class="card-video-stacked">
+          	  				<video controls autoplay muted loop>
+                				<source src="https://adityagithubgupta.github.io/WebsiteACAInnovators/VideoPlane.mp4" type="video/mp4">
+                				Your browser does not support the video tag.
+            				</video>
+        				</div>
+					</div>
                 </div>
             </div>
 
@@ -1047,6 +1058,7 @@
     <button class="scroll-to-top" id="scrollBtn" aria-label="Scroll to top">&#8593;</button>
 </body>
 </html>
+
 
 
 
