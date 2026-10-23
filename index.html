@@ -1379,6 +1379,11 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
 	    });
 	
 	    showImage(0);
+
+		// Automatically change image every 2 seconds
+		setInterval(function () {
+		    showImage(currentIndex + 1);
+		}, 2000);
 	});
 
 
