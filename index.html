@@ -234,78 +234,38 @@
     .feature-list li:before { content:"✓"; color:var(--success); font-weight:900; position:absolute; left:0; }
 
 	 
-/* Stewart Platform Image Carousel */
+	/* Stewart Platform Carousel Fix */
 	.project-media.carousel {
-	  position: relative;
-	  width: 100%;
-	  overflow: hidden;
-	  border-radius: 12px;
-	  aspect-ratio: 16 / 10;
+	    position: relative;
+	    min-height: 0;
+	    height: auto;
+	    aspect-ratio: 16 / 10;
+	    overflow: hidden;
+	    background: #e8edf3;
 	}
 	
-	.project-media.carousel .carousel-image {
-	  display: none;
-	  width: 100%;
-	  height: 100%;
-	  object-fit: contain;
+	.project-media.carousel img.carousel-image {
+	    display: none !important;
+	    position: absolute;
+	    inset: 0;
+	    width: 100%;
+	    height: 100%;
+	    min-height: 0 !important;
+	    object-fit: contain;
 	}
 	
-	.project-media.carousel .carousel-image.active {
-	  display: block;
+	.project-media.carousel img.carousel-image.active {
+	    display: block !important;
 	}
 	
-	.carousel-btn {
-	  position: absolute;
-	  top: 50%;
-	  transform: translateY(-50%);
-	  background: rgba(41, 44, 96, 0.8);
-	  color: white;
-	  border: none;
-	  border-radius: 50%;
-	  width: 36px;
-	  height: 36px;
-	  cursor: pointer;
-	  font-size: 18px;
-	  z-index: 2;
+	.project-media.carousel .carousel-btn {
+	    z-index: 5;
 	}
 	
-	.carousel-btn:hover {
-	  background: #f4a62a;
-	  color: #292c60;
+	.project-media.carousel .carousel-dots {
+	    z-index: 5;
 	}
-	
-	.carousel-btn.prev {
-	  left: 10px;
-	}
-	
-	.carousel-btn.next {
-	  right: 10px;
-	}
-	
-	.carousel-dots {
-	  position: absolute;
-	  bottom: 10px;
-	  left: 0;
-	  right: 0;
-	  display: flex;
-	  justify-content: center;
-	  gap: 8px;
-	  z-index: 2;
-	}
-	
-	.carousel-dot {
-	  width: 9px;
-	  height: 9px;
-	  padding: 0;
-	  border: none;
-	  border-radius: 50%;
-	  background: #b8b8b8;
-	  cursor: pointer;
-	}
-	
-	.carousel-dot.active {
-	  background: #f4a62a;
-	}
+
  
 /* ---------- Safety Shuttle Video Size ---------- */
 	.safety-video {
@@ -844,14 +804,14 @@
           <article class="project">
             <div class="project-media carousel">
 				<img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Stewart1.png" alt="ACA Innovators Stewart Platform 1" class="carousel-image active"/>
-				<img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Stewart2.png" alt="ACA Innovators Stewart Platform 2" class="carousel-image active"/>
-				<button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
-  				<button class="carousel-btn next" aria-label="Next image">&#10095;</button>
-
-  				<div class="carousel-dots">
-    				<button class="carousel-dot active" aria-label="Show image 1"></button>
-    				<button class="carousel-dot" aria-label="Show image 2"></button>
-  				</div>
+				<img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Stewart2.png" alt="ACA Innovators Stewart Platform 2" class="carousel-image"/>
+			    <button type="button" class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+			    <button type="button" class="carousel-btn next" aria-label="Next image">&#10095;</button>
+			
+			    <div class="carousel-dots">
+			        <button type="button" class="carousel-dot active" aria-label="Show image 1"></button>
+			        <button type="button" class="carousel-dot" aria-label="Show image 2"></button>
+			    </div>
 			</div>
             <div class="project-copy">
               <span class="tag">In development</span>
@@ -1380,6 +1340,47 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
         originalTestimonials[0].style.flexBasis = '50%';
       }
     }
+	
+	/* ---------------------------------------------------------
+	   Stewart Platform Image Carousel
+	   --------------------------------------------------------- */
+	document.querySelectorAll(".project-media.carousel").forEach(function (carousel) {
+	    const images = carousel.querySelectorAll(".carousel-image");
+	    const dots = carousel.querySelectorAll(".carousel-dot");
+	    const prevButton = carousel.querySelector(".carousel-btn.prev");
+	    const nextButton = carousel.querySelector(".carousel-btn.next");
+	
+	    let currentIndex = 0;
+	
+	    function showImage(index) {
+	        currentIndex = (index + images.length) % images.length;
+	
+	        images.forEach(function (image, i) {
+	            image.classList.toggle("active", i === currentIndex);
+	        });
+	
+	        dots.forEach(function (dot, i) {
+	            dot.classList.toggle("active", i === currentIndex);
+	        });
+	    }
+	
+	    prevButton.addEventListener("click", function () {
+	        showImage(currentIndex - 1);
+	    });
+	
+	    nextButton.addEventListener("click", function () {
+	        showImage(currentIndex + 1);
+	    });
+	
+	    dots.forEach(function (dot, i) {
+	        dot.addEventListener("click", function () {
+	            showImage(i);
+	        });
+	    });
+	
+	    showImage(0);
+	});
+
 
 
   </script>
