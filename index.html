@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,8 @@
   <meta name="keywords" content="mechanical design, product design, CAD, CAE, FEA, CFD, prototyping, manufacturing support, Stewart platform, ASRS safety" />
   <meta name="author" content="ACA Innovators" />
   <title>ACA Innovators | Mechanical Product Design & Engineering</title>
-  <link rel="icon" href="Icon.jpg" type="image/jpg" />
+  <link rel="icon" href="Icon.jpg" type="image/jpeg" />
+
   <style>
     :root {
       --ink: #0b1220;
@@ -26,17 +28,19 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       color: var(--ink);
       background: var(--paper);
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
+
     img, video { max-width: 100%; display: block; }
     a { color: inherit; }
-
     .wrap { width: min(calc(100% - 40px), var(--max)); margin: auto; }
 
     /* ---------- Navigation ---------- */
@@ -48,6 +52,7 @@
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
+
     .nav {
       min-height: 74px;
       display: flex;
@@ -55,6 +60,7 @@
       justify-content: space-between;
       gap: 24px;
     }
+
     .brand {
       display: flex;
       align-items: center;
@@ -65,8 +71,17 @@
       letter-spacing: -.02em;
       white-space: nowrap;
     }
-    .brand img {width:66px; height:44px; object-fit:contain; border-radius:8px; background:#ffffff; }
+
+    .brand img {
+      width: 66px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: white;
+    }
+
     .nav-links { display: flex; align-items: center; gap: 8px; }
+
     .nav-links a {
       text-decoration: none;
       color: #d9e1ec;
@@ -75,15 +90,29 @@
       border-radius: 10px;
       transition: .2s ease;
     }
-    .nav-links a:hover { background: rgba(255,255,255,.07); color: white; }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,.07);
+      color: white;
+    }
+
     .nav-cta {
       background: var(--accent) !important;
       color: white !important;
       padding-inline: 16px !important;
       font-weight: 750;
     }
+
     .nav-cta:hover { background: #b95f04 !important; }
-    .menu-btn { display:none; border:0; background:transparent; color:white; font-size:1.5rem; cursor:pointer; }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
     /* ---------- Hero ---------- */
     .hero {
@@ -93,6 +122,7 @@
         linear-gradient(135deg, #0b1220 0%, #111b2d 58%, #172033 100%);
       overflow: hidden;
     }
+
     .hero-grid {
       display: grid;
       grid-template-columns: 1.1fr .9fr;
@@ -101,6 +131,7 @@
       min-height: 650px;
       padding: 72px 0;
     }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -111,7 +142,14 @@
       font-size: .76rem;
       font-weight: 800;
     }
-    .eyebrow:before { content:""; width:28px; height:2px; background:var(--accent-2); }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--accent-2);
+    }
+
     .hero h1 {
       margin: 18px 0 20px;
       font-size: clamp(2.8rem, 6vw, 5.6rem);
@@ -119,9 +157,11 @@
       letter-spacing: -.055em;
       max-width: 780px;
     }
+
     .hero h1 span { color: #f7b955; }
     .hero-copy { max-width: 690px; font-size: 1.12rem; color: #cbd5e1; }
-    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -135,344 +175,365 @@
       font-weight: 800;
       transition: transform .2s ease, background .2s ease, border-color .2s ease;
     }
+
     .btn:hover { transform: translateY(-2px); }
-    .btn-primary { color:white; background:var(--accent); }
-    .btn-primary:hover { background:#b95f04; }
-    .btn-secondary { color:white; border-color:#536075; background:rgba(255,255,255,.03); }
-    .btn-secondary:hover { background:rgba(255,255,255,.08); border-color:#7c899f; }
+    .btn-primary { color: white; background: var(--accent); }
+    .btn-primary:hover { background: #b95f04; }
+    .btn-secondary { color: white; border-color: #536075; background: rgba(255,255,255,.03); }
+    .btn-secondary:hover { background: rgba(255,255,255,.08); border-color: #7c899f; }
 
     .hero-proof {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-      margin-top:45px;
-      max-width:720px;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+      margin-top: 45px;
+      max-width: 720px;
     }
+
     .proof-item { border-left: 2px solid var(--accent); padding-left: 14px; }
-    .proof-item strong { display:block; font-size:1.2rem; color:white; }
-    .proof-item span { font-size:.86rem; color:#9aa8bb; }
+    .proof-item strong { display: block; font-size: 1.2rem; color: white; }
+    .proof-item span { font-size: .86rem; color: #9aa8bb; }
 
     .hero-media {
-      position:relative;
+      position: relative;
       border-radius: 26px;
-      overflow:hidden;
+      overflow: hidden;
       box-shadow: 0 30px 80px rgba(0,0,0,.35);
       border: 1px solid rgba(255,255,255,.1);
-      background:#101827;
-      min-height:460px;
+      background: #101827;
+      min-height: 460px;
     }
-    .hero-media video { width:100%; height:100%; min-height:460px; object-fit:cover; opacity:.9; }
+
+    .hero-media video {
+      width: 100%;
+      height: 100%;
+      min-height: 460px;
+      object-fit: cover;
+      opacity: .9;
+    }
+
     .media-tag {
-      position:absolute;
-      left:18px;
-      bottom:18px;
-      background:rgba(11,18,32,.9);
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: rgba(11,18,32,.9);
       backdrop-filter: blur(10px);
-      border:1px solid rgba(255,255,255,.14);
-      border-radius:12px;
-      padding:12px 14px;
-      font-size:.88rem;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: .88rem;
     }
-    .media-tag strong { display:block; color:white; }
-    .media-tag span { color:#aeb9c8; }
+
+    .media-tag strong { display: block; color: white; }
+    .media-tag span { color: #aeb9c8; }
 
     /* ---------- Sections ---------- */
     section { padding: 92px 0; }
     .section-soft { background: var(--soft); }
-    .section-dark { background: var(--ink); color:white; }
+    .section-dark { background: var(--ink); color: white; }
     .section-heading { max-width: 760px; margin-bottom: 42px; }
+
     .section-heading h2 {
       margin: 10px 0 15px;
       font-size: clamp(2rem, 4vw, 3.35rem);
       line-height: 1.08;
       letter-spacing: -.04em;
     }
-    .section-heading p { color: var(--steel); font-size:1.05rem; }
-    .section-dark .section-heading p { color:#aab6c6; }
+
+    .section-heading p { color: var(--steel); font-size: 1.05rem; }
+    .section-dark .section-heading p { color: #aab6c6; }
 
     /* ---------- Capabilities ---------- */
-    .capability-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .capability-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+
     .cap-card {
-      background:white;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:25px;
-      min-height:230px;
-      transition:.25s ease;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 25px;
+      min-height: 230px;
+      transition: .25s ease;
     }
-    .cap-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); border-color:#c6d0dc; }
+
+    .cap-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+      border-color: #c6d0dc;
+    }
+
     .cap-icon {
-      width:44px; height:44px; border-radius:11px;
-      display:grid; place-items:center;
-      background:#fff4df; color:#a45100;
-      font-weight:900; font-size:.82rem;
-      margin-bottom:35px;
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      background: #fff4df;
+      color: #a45100;
+      font-weight: 900;
+      font-size: .82rem;
+      margin-bottom: 35px;
     }
-    .cap-card h3 { margin:0 0 10px; font-size:1.08rem; }
-    .cap-card p { margin:0; color:var(--steel); font-size:.92rem; }
+
+    .cap-card h3 { margin: 0 0 10px; font-size: 1.08rem; }
+    .cap-card p { margin: 0; color: var(--steel); font-size: .92rem; }
 
     /* ---------- Projects ---------- */
-    .projects { display:grid; gap:24px; }
+    .projects { display: grid; gap: 24px; }
+
     .project {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      overflow:hidden;
-      border:1px solid var(--line);
-      border-radius:24px;
-      background:white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: white;
       box-shadow: 0 10px 30px rgba(15,23,42,.05);
     }
-    .project:nth-child(even) .project-media { order:2; }
-    .project-media { min-height:440px; background:#e8edf3; }
-    .project-media img, .project-media video { width:100%; height:100%; min-height:440px; object-fit:cover; }
-    .project-copy { padding:46px; display:flex; flex-direction:column; justify-content:center; }
-    .tag { display:inline-block; width:max-content; padding:6px 10px; border-radius:999px; background:#fff2dc; color:#9a4c00; font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; }
-    .project-copy h3 { font-size:2rem; line-height:1.12; margin:15px 0; letter-spacing:-.03em; }
-    .project-copy p { color:var(--steel); }
-    .feature-list { padding:0; margin:12px 0 0; list-style:none; }
-    .feature-list li { margin:8px 0; padding-left:23px; position:relative; }
-    .feature-list li:before { content:"✓"; color:var(--success); font-weight:900; position:absolute; left:0; }
 
-/* ---------- Safety Shuttle Video Size ---------- */
-	.safety-video {
-	  min-height: 0;
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  padding: 30px;
-	  background: #e8edf3;
-	}
+    .project:nth-child(even) .project-media { order: 2; }
 
-	.safety-video video {
-	  width: 60%;
-	  height: auto;
-	  min-height: 0;
-	  object-fit: contain;
-	}
+    .project-media {
+      min-height: 440px;
+      background: #e8edf3;
+    }
+
+    .project-media img,
+    .project-media video {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      object-fit: cover;
+    }
+
+    /* ---------- Stewart Platform Automatic Fade Carousel ---------- */
+    .stewart-carousel {
+      position: relative;
+      min-height: 440px;
+      overflow: hidden;
+      background: #e8edf3;
+      isolation: isolate;
+    }
+
+    .project-media.stewart-carousel .stewart-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      object-fit: contain;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .7s ease-in-out, visibility .7s ease-in-out;
+    }
+
+    .project-media.stewart-carousel .stewart-slide.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 1;
+    }
+
+    .project-copy {
+      padding: 46px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .tag {
+      display: inline-block;
+      width: max-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #fff2dc;
+      color: #9a4c00;
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .project-copy h3 {
+      font-size: 2rem;
+      line-height: 1.12;
+      margin: 15px 0;
+      letter-spacing: -.03em;
+    }
+
+    .project-copy p { color: var(--steel); }
+
+    .feature-list { padding: 0; margin: 12px 0 0; list-style: none; }
+    .feature-list li { margin: 8px 0; padding-left: 23px; position: relative; }
+
+    .feature-list li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+    }
+
+    /* ---------- Safety Shuttle Video ---------- */
+    .safety-video {
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: #e8edf3;
+    }
+
+    .safety-video video {
+      width: 60%;
+      height: auto;
+      min-height: 0;
+      object-fit: contain;
+    }
 
     /* ---------- Process ---------- */
-    .process-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; counter-reset:step; }
-    .step { border-top:1px solid #435066; padding-top:23px; }
-    .step:before { counter-increment:step; content:"0" counter(step); color:#f0ae49; font-size:.78rem; font-weight:900; letter-spacing:.1em; }
-    .step h3 { margin:12px 0 8px; font-size:1rem; }
-    .step p { margin:0; color:#9ba8ba; font-size:.88rem; }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5,1fr);
+      gap: 14px;
+      counter-reset: step;
+    }
 
+    .step { border-top: 1px solid #435066; padding-top: 23px; }
+
+    .step::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      color: #f0ae49;
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+    }
+
+    .step h3 { margin: 12px 0 8px; font-size: 1rem; }
+    .step p { margin: 0; color: #9ba8ba; font-size: .88rem; }
 
     /* ---------- Industries ---------- */
-    .industry-grid {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
+    .industry-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+
     .industry-card {
-      background:white;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:28px;
-      min-height:220px;
-      transition:.25s ease;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      min-height: 220px;
+      transition: .25s ease;
     }
+
     .industry-card:hover {
-      transform:translateY(-4px);
-      box-shadow:var(--shadow);
-      border-color:#c6d0dc;
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: #c6d0dc;
     }
-    .industry-card .industry-no {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:42px;
-      height:42px;
-      border-radius:11px;
-      background:#fff2dc;
-      color:#9a4c00;
-      font-size:.78rem;
-      font-weight:900;
-      margin-bottom:28px;
+
+    .industry-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      background: #fff2dc;
+      color: #9a4c00;
+      font-size: .78rem;
+      font-weight: 900;
+      margin-bottom: 28px;
     }
-    .industry-card h3 { margin:0 0 10px; font-size:1.15rem; }
-    .industry-card p { margin:0; color:var(--steel); }
+
+    .industry-card h3 { margin: 0 0 10px; font-size: 1.15rem; }
+    .industry-card p { margin: 0; color: var(--steel); }
 
     #industries .section-heading h2,
     #industries .industry-card h3,
     #why-us .section-heading h2,
-    #why-us .why-item h3 {
-      color:white;
-    }
+    #why-us .why-item h3 { color: white; }
+
     #industries .section-heading p,
-    #why-us .section-heading p {
-      color:#aab6c6;
-    }
+    #why-us .section-heading p { color: #aab6c6; }
+
     #industries .industry-card {
-      background:#18243a;
-      border-color:#435066;
-      box-shadow:none;
-    }
-    #industries .industry-card:hover {
-      border-color:#5f6d82;
-      box-shadow:0 12px 30px rgba(0,0,0,.18);
-    }
-    #industries .industry-card p {
-      color:#9ba8ba;
-    }
-    #industries .industry-card .industry-no {
-      background:#2a3548;
-      color:#f0ae49;
+      background: #18243a;
+      border-color: #435066;
+      box-shadow: none;
     }
 
-    #why-us .why-list {
-      border-top-color:#435066;
+    #industries .industry-card:hover {
+      border-color: #5f6d82;
+      box-shadow: 0 12px 30px rgba(0,0,0,.18);
     }
-    #why-us .why-item {
-      border-bottom-color:#435066;
-    }
-    #why-us .why-num {
-      color:#f0ae49;
-    }
-    #why-us .why-item p {
-      color:#9ba8ba;
+
+    #industries .industry-card p { color: #9ba8ba; }
+
+    #industries .industry-no {
+      background: #2a3548;
+      color: #f0ae49;
     }
 
     /* ---------- Engineering Deliverables ---------- */
     .deliverables-grid {
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 14px;
     }
+
     .deliverable-card {
-      background:white;
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:20px;
-      min-height:112px;
-      display:flex;
-      align-items:center;
-      gap:14px;
-      font-weight:800;
-      line-height:1.35;
-    }
-    .deliverable-card:before {
-      content:"✓";
-      flex:0 0 34px;
-      width:34px;
-      height:34px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:#edf7f1;
-      color:var(--success);
-      font-weight:900;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+      min-height: 112px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      line-height: 1.35;
     }
 
-    /* ---------- Why ---------- */
-    .why-grid { display:grid; grid-template-columns:.82fr 1.18fr; gap:64px; align-items:start; }
-    .why-sticky { position:sticky; top:110px; }
-    .why-list { border-top:1px solid var(--line); }
-    .why-item { display:grid; grid-template-columns:55px 1fr; gap:20px; padding:25px 0; border-bottom:1px solid var(--line); }
-    .why-num { color:var(--accent); font-weight:900; }
-    .why-item h3 { margin:0 0 6px; font-size:1.05rem; }
-    .why-item p { margin:0; color:var(--steel); }
-
-    /* =========================================================
-       CLIENT FEEDBACK LOGOS
-       Restores the same three company/client images used in the
-       original website.
-       ========================================================= */
-    .quote-logo-wrap {
-      height:76px;
-      display:flex;
-      align-items:center;
-      margin-bottom:18px;
-    }
-    .quote-logo {
-      width:110px;
-      max-height:72px;
-      object-fit:contain;
-      background:white;
-      border:1px solid var(--line);
-      border-radius:10px;
-      padding:8px;
+    .deliverable-card::before {
+      content: "✓";
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #edf7f1;
+      color: var(--success);
+      font-weight: 900;
     }
 
-    /* =========================================================
-       PRIVACY POLICY MODAL
-       Same interaction pattern as the original website:
-       footer link → modal; close with ×, outside click or Esc.
-       ========================================================= */
-    .privacy-footer-link {
-      color:var(--accent);
-      text-decoration:none;
-      font-weight:700;
-      cursor:pointer;
-    }
-    .privacy-footer-link:hover {
-      text-decoration:underline;
+    /* ---------- Why ACA ---------- */
+    .why-grid {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 64px;
+      align-items: start;
     }
 
-    .privacy-modal {
-      display:none;
-      position:fixed;
-      z-index:10000;
-      left:0;
-      top:0;
-      width:100%;
-      height:100%;
-      overflow:auto;
-      background-color:rgba(0,0,0,.62);
-      padding:30px 16px;
+    .why-sticky { position: sticky; top: 110px; }
+    .why-list { border-top: 1px solid var(--line); }
+    .why-item {
+      display: grid;
+      grid-template-columns: 55px 1fr;
+      gap: 20px;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .privacy-modal-content {
-      margin:2% auto;
-      background:white;
-      border:1px solid var(--line);
-      border-radius:18px;
-      max-height:90vh;
-      padding:32px;
-      width:min(860px, 94%);
-      position:relative;
-      text-align:left;
-      color:var(--ink);
-      overflow-y:auto;
-      box-shadow:0 18px 55px rgba(0,0,0,.28);
-    }
+    .why-num { color: var(--accent); font-weight: 900; }
+    .why-item h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .why-item p { margin: 0; color: var(--steel); }
 
-    .privacy-modal-content h2 {
-      margin-top:0;
-      color:var(--ink);
-    }
+    #why-us .why-list,
+    #why-us .why-item { border-color: #435066; }
 
-    .privacy-modal-content p {
-      color:#465468;
-      line-height:1.7;
-    }
+    #why-us .why-num { color: #f0ae49; }
+    #why-us .why-item p { color: #9ba8ba; }
 
-    .privacy-close {
-      position:absolute;
-      top:10px;
-      right:18px;
-      font-size:34px;
-      line-height:1;
-      font-weight:700;
-      color:#98a3b1;
-      cursor:pointer;
-      border:0;
-      background:transparent;
-    }
-    .privacy-close:hover {
-      color:var(--ink);
-    }
-
-    /* ---------- Testimonials / Side-scroll ---------- */
-    /*
-       Dynamic two-at-a-time testimonial slider.
-
-       Visible sequence for N testimonials:
-       1-2 → 2-3 → 3-4 → ... → (N-1)-N → N-1 → 1-2
-
-       JavaScript appends temporary copies of testimonials 1 and 2,
-       so the final wrap-around remains visually continuous.
-    */
+    /* ---------- Testimonials ---------- */
     .quotes {
       width: 86%;
       margin: 0 auto;
@@ -482,15 +543,10 @@
     .quotes-track {
       display: flex;
       gap: 14px;
-      transition: transform .50s ease-in-out;
+      transition: transform .75s ease-in-out;
       will-change: transform;
     }
 
-    /*
-       Two testimonial cards are visible at a time.
-       Padding and typography are slightly reduced so each card is
-       more compact than the previous single-card version.
-    */
     .quote {
       flex: 0 0 calc((100% - 14px) / 2);
       min-width: 0;
@@ -508,22 +564,14 @@
       line-height: 1.55;
     }
 
-    .quote footer {
-      margin-top: 14px;
-      font-weight: 800;
-    }
-
-    .quote footer span {
-      display: block;
-      color: var(--steel);
-      font-weight: 500;
-      font-size: .82rem;
-    }
+    .quote footer { margin-top: 14px; font-weight: 800; }
+    .quote footer span { display: block; color: var(--steel); font-weight: 500; font-size: .82rem; }
 
     .quote-logo-wrap {
-      height: 62px;
+      min-height: 62px;
       display: flex;
       align-items: center;
+      gap: 12px;
       margin-top: 14px;
       margin-bottom: 8px;
     }
@@ -540,128 +588,263 @@
 
     /* ---------- CTA ---------- */
     .cta-box {
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:30px;
-      align-items:center;
-      padding:42px;
-      border-radius:24px;
-      background:linear-gradient(120deg, #111b2d, #1c2940);
-      color:white;
-      box-shadow:var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+      padding: 42px;
+      border-radius: 24px;
+      background: linear-gradient(120deg, #111b2d, #1c2940);
+      color: white;
+      box-shadow: var(--shadow);
     }
-    .cta-box h2 { margin:0 0 8px; font-size:2rem; letter-spacing:-.03em; }
-    .cta-box p { margin:0; color:#b7c2d0; }
+
+    .cta-box h2 { margin: 0 0 8px; font-size: 2rem; letter-spacing: -.03em; }
+    .cta-box p { margin: 0; color: #b7c2d0; }
 
     /* ---------- Contact ---------- */
-    .contact-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:44px; }
-    .contact-card { background:white; border:1px solid var(--line); border-radius:20px; padding:30px; }
-    .contact-meta { display:grid; gap:18px; margin-top:30px; }
-    .meta-item span { display:block; color:var(--steel); font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; font-weight:800; }
-    .meta-item a, .meta-item p { margin:3px 0 0; text-decoration:none; font-weight:700; }
-    form { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .field-full { grid-column:1/-1; }
-    label { display:block; font-size:.86rem; font-weight:800; margin-bottom:7px; }
-    input, textarea, select {
-      width:100%;
-      border:1px solid #cfd8e3;
-      background:#fbfcfd;
-      border-radius:10px;
-      padding:13px 14px;
-      font:inherit;
-      color:var(--ink);
-      outline:none;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 44px;
     }
-    input:focus, textarea:focus, select:focus { border-color:#9c650f; box-shadow:0 0 0 3px rgba(217,119,6,.1); }
-    textarea { resize:vertical; min-height:140px; }
-    button { font:inherit; }
-    .submit { cursor:pointer; border:none; }
+
+    .contact-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 30px;
+    }
+
+    .contact-meta { display: grid; gap: 18px; margin-top: 30px; }
+
+    .meta-item span {
+      display: block;
+      color: var(--steel);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 800;
+    }
+
+    .meta-item a, .meta-item p { margin: 3px 0 0; text-decoration: none; font-weight: 700; }
+
+    form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field-full { grid-column: 1 / -1; }
+
+    label { display: block; font-size: .86rem; font-weight: 800; margin-bottom: 7px; }
+
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid #cfd8e3;
+      background: #fbfcfd;
+      border-radius: 10px;
+      padding: 13px 14px;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #9c650f;
+      box-shadow: 0 0 0 3px rgba(217,119,6,.1);
+    }
+
+    textarea { resize: vertical; min-height: 140px; }
+    button { font: inherit; }
+    .submit { cursor: pointer; border: none; }
 
     /* ---------- Footer ---------- */
-    .footer { background:#070c14; color:#c8d1dd; padding:55px 0 24px; }
-    .footer-grid { display:grid; grid-template-columns:1.25fr .75fr .9fr; gap:50px; }
-    .footer h3 { color:white; margin-top:0; }
-    .footer ul { margin:0; padding:0; list-style:none; }
-    .footer li { margin:8px 0; color:#98a6b8; }
-    .footer a { text-decoration:none; }
-    .footer a:hover { color:white; }
-    .footer-brand { max-width:330px; }
-    .footer-brand img { width:75px; border-radius:10px; margin-bottom:16px; }
-    .footer-bottom { margin-top:40px; padding-top:20px; border-top:1px solid #263143; display:flex; justify-content:space-between; gap:20px; color:#7e8ca0; font-size:.85rem; }
+    .footer { background: #070c14; color: #c8d1dd; padding: 55px 0 24px; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr .9fr;
+      gap: 50px;
+    }
+
+    .footer h3 { color: white; margin-top: 0; }
+    .footer ul { margin: 0; padding: 0; list-style: none; }
+    .footer li { margin: 8px 0; color: #98a6b8; }
+    .footer a { text-decoration: none; }
+    .footer a:hover { color: white; }
+    .footer-brand { max-width: 330px; }
+    .footer-brand img { width: 75px; border-radius: 10px; margin-bottom: 16px; }
+
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #263143;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #7e8ca0;
+      font-size: .85rem;
+    }
+
+    /* ---------- Privacy Policy Modal ---------- */
+    .privacy-footer-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .privacy-footer-link:hover { text-decoration: underline; }
+
+    .privacy-modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,.62);
+      padding: 30px 16px;
+    }
+
+    .privacy-modal-content {
+      margin: 2% auto;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      max-height: 90vh;
+      padding: 32px;
+      width: min(860px, 94%);
+      position: relative;
+      text-align: left;
+      color: var(--ink);
+      overflow-y: auto;
+      box-shadow: 0 18px 55px rgba(0,0,0,.28);
+    }
+
+    .privacy-modal-content h2 { margin-top: 0; color: var(--ink); }
+    .privacy-modal-content p { color: #465468; line-height: 1.7; }
+
+    .privacy-close {
+      position: absolute;
+      top: 10px;
+      right: 18px;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 700;
+      color: #98a3b1;
+      cursor: pointer;
+      border: 0;
+      background: transparent;
+    }
+
+    .privacy-close:hover { color: var(--ink); }
 
     /* ---------- Floating WhatsApp ---------- */
     .whatsapp {
-      position:fixed;
-      z-index:900;
-      right:22px;
-      bottom:22px;
-      width:54px;
-      height:54px;
-      border-radius:50%;
-      overflow:hidden;
-      box-shadow:0 10px 30px rgba(0,0,0,.25);
-      transition:.2s ease;
+      position: fixed;
+      z-index: 900;
+      right: 22px;
+      bottom: 22px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      transition: .2s ease;
     }
-    .whatsapp:hover { transform:translateY(-3px); }
-    .whatsapp img { width:100%; height:100%; object-fit:cover; }
+
+    .whatsapp:hover { transform: translateY(-3px); }
+    .whatsapp img { width: 100%; height: 100%; object-fit: cover; }
 
     /* ---------- Responsive ---------- */
     @media (max-width: 980px) {
-      .menu-btn { display:block; }
+      .menu-btn { display: block; }
+
       .nav-links {
-        display:none;
-        position:absolute;
-        top:74px;
-        left:0;
-        right:0;
-        padding:15px 20px 22px;
-        background:#0b1220;
-        flex-direction:column;
-        align-items:stretch;
+        display: none;
+        position: absolute;
+        top: 74px;
+        left: 0;
+        right: 0;
+        padding: 15px 20px 22px;
+        background: #0b1220;
+        flex-direction: column;
+        align-items: stretch;
       }
-      .nav-links.open { display:flex; }
-      .nav-links a { text-align:center; }
-      .hero-grid, .project, .why-grid, .contact-grid { grid-template-columns:1fr; }
-      .hero-grid { min-height:auto; padding:60px 0 70px; }
-      .hero-media { min-height:360px; }
-      .hero-media video { min-height:360px; }
-      .capability-grid { grid-template-columns:repeat(2,1fr); }
-      .industry-grid { grid-template-columns:1fr; }
-      .deliverables-grid { grid-template-columns:repeat(2,1fr); }
-      .process-grid { grid-template-columns:repeat(2,1fr); }
-      .quotes { grid-template-columns:1fr; }
-      .project:nth-child(even) .project-media { order:0; }
-      .why-sticky { position:static; }
-      .footer-grid { grid-template-columns:1fr 1fr; }
+
+      .nav-links.open { display: flex; }
+      .nav-links a { text-align: center; }
+
+      .hero-grid,
+      .project,
+      .why-grid,
+      .contact-grid { grid-template-columns: 1fr; }
+
+      .hero-grid { min-height: auto; padding: 60px 0 70px; }
+      .hero-media { min-height: 360px; }
+      .hero-media video { min-height: 360px; }
+      .capability-grid { grid-template-columns: repeat(2,1fr); }
+      .industry-grid { grid-template-columns: 1fr; }
+      .deliverables-grid { grid-template-columns: repeat(2,1fr); }
+      .process-grid { grid-template-columns: repeat(2,1fr); }
+      .project:nth-child(even) .project-media { order: 0; }
+      .why-sticky { position: static; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 640px) {
-      .wrap { width:min(calc(100% - 28px), var(--max)); }
-      .quotes { width:100%; }
-      .quote { padding:14px; }
-      .quote p { font-size:.82rem; }
-      .quote-logo-wrap { height:52px; }
-      .quote-logo { width:78px; max-height:48px; }
-      section { padding:70px 0; }
-      .hero h1 { font-size:3.1rem; }
-      .hero-proof { grid-template-columns:1fr; }
-      .capability-grid, .process-grid, .footer-grid, form, .deliverables-grid { grid-template-columns:1fr; }
-      .field-full { grid-column:auto; }
-      .project-copy { padding:30px 24px; }
-      .project-media, .project-media img, .project-media video { min-height:310px; }
-      .cta-box { grid-template-columns:1fr; padding:30px 24px; }
-      .footer-bottom { flex-direction:column; }
+      .wrap { width: min(calc(100% - 28px), var(--max)); }
+      .quotes { width: 100%; }
+      .quote { flex-basis: 100%; padding: 14px; }
+      .quote p { font-size: .82rem; }
+      .quote-logo-wrap { min-height: 52px; }
+      .quote-logo { width: 78px; max-height: 48px; }
+      section { padding: 70px 0; }
+      .hero h1 { font-size: 3.1rem; }
+      .hero-proof { grid-template-columns: 1fr; }
+      .capability-grid,
+      .process-grid,
+      .footer-grid,
+      form,
+      .deliverables-grid { grid-template-columns: 1fr; }
+
+      .field-full { grid-column: auto; }
+      .project-copy { padding: 30px 24px; }
+
+      .project-media,
+      .project-media img,
+      .project-media video { min-height: 310px; }
+
+      .project-media.stewart-carousel { min-height: 310px; }
+
+      .project-media.stewart-carousel .stewart-slide {
+        min-height: 0;
+      }
+
+      .cta-box { grid-template-columns: 1fr; padding: 30px 24px; }
+      .footer-bottom { flex-direction: column; }
+      .safety-video video { width: 100%; }
+      .privacy-modal-content { padding: 28px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      .project-media.stewart-carousel .stewart-slide {
+        transition: none;
+      }
     }
   </style>
 </head>
-<body>
 
+<body>
   <header class="site-header">
     <div class="wrap nav">
       <a class="brand" href="#home">
-        <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="ACA Innovators logo" /><span>ACA Innovators</span>
+        <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="ACA Innovators logo" />
+        <span>ACA Innovators</span>
       </a>
-      <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+
       <nav class="nav-links" id="navLinks">
         <a href="#capabilities">Capabilities</a>
         <a href="#industries">Industries</a>
@@ -676,40 +859,48 @@
   </header>
 
   <main>
+    <!-- ---------- Hero ---------- -->
     <section class="hero" id="home">
       <div class="wrap hero-grid">
         <div>
           <div class="eyebrow">Mechanical product design & engineering</div>
           <h1>Engineering ideas into <span>buildable products.</span></h1>
+
           <p class="hero-copy">
             ACA Innovators supports product development from early concept through CAD, simulation, prototyping and manufacturing support - with a focus on practical engineering, precision and manufacturability.
           </p>
+
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">Discuss your requirement →</a>
             <a class="btn btn-secondary" href="#products">View engineering projects</a>
           </div>
+
           <div class="hero-proof">
             <div class="proof-item"><strong>CAD / CAE</strong><span>Design, simulation & validation</span></div>
             <div class="proof-item"><strong>Prototype</strong><span>Concept to physical validation</span></div>
             <div class="proof-item"><strong>Across Border</strong><span>Multi-lingual engineering support</span></div>
           </div>
         </div>
+
         <div class="hero-media">
-          <video autoplay muted loop playsinline poster="https://adityagithubgupta.github.io/WebsiteACAInnovators/OurServicesConceptDesign.jpg">
-            <source src="https://adityagithubgupta.github.io/WebsiteACAInnovators/VideoPlane.mp4" type="video/mp4" />
-          </video>
-          <div class="media-tag"><strong>Design. Validate. Build.</strong><span>Mechanical engineering from concept to production.</span></div>
+          <video autoplay muted loop playsinline poster="https://adityagithubgupta.github.io/WebsiteACAInnovators/HeroImage.jpg">
+	  </video>
+          <div class="media-tag">
+            <strong>Design. Validate. Build.</strong>
+            <span>Mechanical engineering from concept to production.</span>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ---------- Capabilities ---------- -->
     <section id="capabilities">
       <div class="wrap">
         <div class="section-heading">
           <div class="eyebrow" style="color:#9a4c00">Engineering capabilities</div>
           <h2>A focused mechanical product - development stack.</h2>
-          <!--<p>Enter Text If Needed</p>-->
         </div>
+
         <div class="capability-grid">
           <article class="cap-card"><div class="cap-icon">01</div><h3>Concept & Product Design</h3><p>Concept development, mechanical architecture, sheet-metal products, enclosures and design refinement.</p></article>
           <article class="cap-card"><div class="cap-icon">02</div><h3>3D CAD & Assemblies</h3><p>Parametric solid modelling, surface modelling, assemblies, production drawings and BOM development.</p></article>
@@ -723,12 +914,8 @@
       </div>
     </section>
 
-
-    <!-- =========================================================
-     INDUSTRIES
-     Dark section highlighting target industrial sectors
-     ========================================================= -->
-<section class="section-dark" id="industries">
+    <!-- ---------- Industries ---------- -->
+    <section class="section-dark" id="industries">
       <div class="wrap">
         <div class="section-heading">
           <div class="eyebrow" style="color:#f0ae49">Industries</div>
@@ -758,38 +945,54 @@
       </div>
     </section>
 
+    <!-- ---------- Products ---------- -->
     <section id="products" class="section-soft">
       <div class="wrap">
         <div class="section-heading">
           <div class="eyebrow" style="color:#9a4c00">Products & development programmes</div>
           <h2>Engineering demonstrated through real systems.</h2>
-          <!--<p>Enter Text If Needed.</p>-->
         </div>
 
         <div class="projects">
           <article class="project">
-            <div class="project-media"><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Stewart1.png" alt="ACA Innovators Stewart Platform" /></div>
+            <!-- Stewart Platform image carousel -->
+            <div class="project-media stewart-carousel">
+              <img
+                class="stewart-slide active"
+                src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Stewart1.png"
+                alt="ACA Innovators Stewart Platform - Image 1"
+                fetchpriority="high"
+              />
+
+              <img
+                class="stewart-slide"
+                src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Stewart2.png"
+                alt="ACA Innovators Stewart Platform - Image 2"
+                loading="eager"
+              />
+            </div>
+
             <div class="project-copy">
               <span class="tag">In development</span>
-              <h3>6-DOF Stewart Platform</h3>
-              <p>A parallel - motion platform engineered for controlled movement in surge, sway, heave, roll, pitch and yaw.</p>
+              <h3>A 6-DOF Stabilisation Platform</h3>
+              <p>An autonomous parallel-motion platform engineered for controlled movement in all 6 degree of freedom: surge, sway, heave, roll, pitch and yaw.</p>
               <ul class="feature-list">
                 <li>Six - axis motion architecture</li>
                 <li>Precision positioning and motion simulation</li>
-                <li>Suitable for simulation, testing and research applications</li>
+                <li>All electric actution of the platform</li>
                 <li>Customisable mechanical and control architecture</li>
               </ul>
             </div>
           </article>
 
           <article class="project">
-            <!-- Safety Shuttle demonstration video -->
-	    <div class="project-media safety-video">
-  	      <video autoplay muted loop playsinline controls aria-label="Safety Shuttle demonstration video">
-    		<source src="https://adityagithubgupta.github.io/WebsiteACAInnovators/SafetyShuttleVideo1.mp4" type="video/mp4" />
-    		Your browser does not support the video tag.
-  	      </video>
-	    </div>
+            <div class="project-media safety-video">
+              <video autoplay muted loop playsinline controls aria-label="Safety Shuttle demonstration video">
+                <source src="https://adityagithubgupta.github.io/WebsiteACAInnovators/SafetyShuttleVideo1.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
             <div class="project-copy">
               <span class="tag">Industrial safety</span>
               <h3>Safety Shuttle for ASRS Maintenance</h3>
@@ -806,6 +1009,7 @@
       </div>
     </section>
 
+    <!-- ---------- Process ---------- -->
     <section class="section-dark" id="process">
       <div class="wrap">
         <div class="section-heading">
@@ -813,6 +1017,7 @@
           <h2>A product - development process buyers can understand.</h2>
           <p>A clear process improves confidence: requirements are translated into engineering decisions, validated, then prepared for manufacturing.</p>
         </div>
+
         <div class="process-grid">
           <div class="step"><h3>Requirement</h3><p>Define function, loads, interfaces, constraints, target cost and deliverables.</p></div>
           <div class="step"><h3>Concept</h3><p>Generate architecture options and select practical, manufacturable design directions.</p></div>
@@ -823,12 +1028,8 @@
       </div>
     </section>
 
-
-    <!-- =========================================================
-     ENGINEERING DELIVERABLES
-     Manufacturing and technical documentation supplied to clients
-     ========================================================= -->
-<section id="deliverables">
+    <!-- ---------- Engineering Deliverables ---------- -->
+    <section id="deliverables">
       <div class="wrap">
         <div class="section-heading">
           <div class="eyebrow" style="color:#9a4c00">Engineering Deliverables</div>
@@ -849,11 +1050,8 @@
       </div>
     </section>
 
-    <!-- =========================================================
-     WHY ACA INNOVATORS
-     Dark section describing key company differentiators
-     ========================================================= -->
-<section class="section-dark" id="why-us">
+    <!-- ---------- Why ACA ---------- -->
+    <section class="section-dark" id="why-us">
       <div class="wrap why-grid">
         <div class="why-sticky section-heading">
           <div class="eyebrow" style="color:#f0ae49">Why ACA Innovators</div>
@@ -864,117 +1062,92 @@
         <div class="why-list">
           <div class="why-item">
             <div class="why-num">01</div>
-            <div>
-              <h3>Innovative Engineering</h3>
-              <p>Solutions are developed around function, constraints and product performance.</p>
-            </div>
+            <div><h3>Innovative Engineering</h3><p>Solutions are developed around function, constraints and product performance.</p></div>
           </div>
 
           <div class="why-item">
             <div class="why-num">02</div>
-            <div>
-              <h3>Fast Product Development</h3>
-              <p>Rapid concept iteration and integrated engineering help move projects forward without unnecessary hand - offs.</p>
-            </div>
+            <div><h3>Fast Product Development</h3><p>Rapid concept iteration and integrated engineering help move projects forward without unnecessary hand - offs.</p></div>
           </div>
 
           <div class="why-item">
             <div class="why-num">03</div>
-            <div>
-              <h3>Product - Development Mindset</h3>
-              <p>Support can continue from early idea through prototype, documentation and manufacturing.</p>
-            </div>
+            <div><h3>Product - Development Mindset</h3><p>Support can continue from early idea through prototype, documentation and manufacturing.</p></div>
           </div>
 
           <div class="why-item">
             <div class="why-num">04</div>
-            <div>
-              <h3>NDA &amp; IP Confidentiality</h3>
-              <p>Project information, designs and intellectual property can be protected through NDA and confidentiality agreements.</p>
-            </div>
+            <div><h3>NDA &amp; IP Confidentiality</h3><p>Project information, designs and intellectual property can be protected through NDA and confidentiality agreements.</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================================================
-     CLIENT TESTIMONIALS
-     ========================================================= -->
-<section class="section-soft" id="testimonials">
+    <!-- ---------- Testimonials ---------- -->
+    <section class="section-soft" id="testimonials">
       <div class="wrap">
         <div class="section-heading">
           <div class="eyebrow" style="color:#9a4c00">Client feedback</div>
           <h2>Proof from completed collaborations.</h2>
         </div>
 
-        <!--
-          Testimonial slider:
-          Add any future testimonial as another <blockquote class="quote">
-          inside #testimonialTrack. No CSS or JavaScript changes are required.
-        -->
         <div class="quotes" id="testimonialViewport">
           <div class="quotes-track" id="testimonialTrack">
 
-    <!-- Svastir Ventures testimonial -->
-    <blockquote class="quote">
-      <p>“I had an outstanding experience collaborating with ACA Innovators as part of my investment in BizGears, focused on building AI hubs for MSME businesses. ACA Innovators played a pivotal role in 3D modeling, concept creation, and converting 2D designs into production-ready 3D models, enabling the seamless development of our AI-powered infrastructure. Their technical expertise, precision, and ability to transform complex ideas into high-quality designs exceeded my expectations. Throughout the engagement, they maintained clear communication, adhered to strict timelines, and demonstrated a deep understanding of our vision. Their contributions were instrumental in advancing BizGears' mission. I highly recommend their services!”
-      </p>
+            <blockquote class="quote">
+              <p>“I had an outstanding experience collaborating with ACA Innovators as part of my investment in BizGears, focused on building AI hubs for MSME businesses. ACA Innovators played a pivotal role in 3D modeling, concept creation, and converting 2D designs into production-ready 3D models, enabling the seamless development of our AI-powered infrastructure. Their technical expertise, precision, and ability to transform complex ideas into high-quality designs exceeded my expectations. Throughout the engagement, they maintained clear communication, adhered to strict timelines, and demonstrated a deep understanding of our vision. Their contributions were instrumental in advancing BizGears' mission. I highly recommend their services!”</p>
 
-      <div class="quote-logo-wrap">
-        <img class="quote-logo"     src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialSvastirVentures.jpg" alt="Svastir Ventures logo" /><span><footer> Pankaj Khare <span> Svastir Ventures</span</footer> </span>
-      </div>
+              <div class="quote-logo-wrap">
+                <img class="quote-logo" src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialSvastirVentures.jpg" alt="Svastir Ventures logo" />
+                <footer>Pankaj Khare<span>Svastir Ventures</span></footer>
+              </div>
+            </blockquote>
 
-      <!--<footer>Pankaj Khare <span>Svastir Ventures</span></footer>-->
-    </blockquote>
+            <blockquote class="quote">
+              <p>“We used ACA Inovators for our design project "Hydro ProwerCraft". Such a capable and pleasant supplier and partner would be hard to find. Despite distances of 6283.9 km, or 13.5 hours by plane, a few short messages/ meetings were all that was needed. All phases were delivered according to agreement, punctually. Payments were also in line with expectations. That is, professional all the way.”</p>
 
+              <div class="quote-logo-wrap">
+                <img class="quote-logo" src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.jpg" alt="TAXITUR client image" />
+                <footer>Jarle Tungeland<span>TAXITUR</span></footer>
+              </div>
+            </blockquote>
 
-    <!-- TAXITUR testimonial -->
-    <blockquote class="quote">
-      <p>“We used ACA Inovators for our design project "Hydro ProwerCraft". Such a capable and pleasant supplier and partner would be hard to find. Despite distances of 6283.9 km, or 13.5 hours by plane, a few short messages/ meetings were all that was needed. All phases were delivered according to agreement, punctually. Payments were also in line with expectations. That is, professional all the way.”
-      </p>
+            <blockquote class="quote">
+              <p>“Highly impressed with ACA Innovators! Worked on optimizing and designing conveyor layouts in CAD for various industries. The professionalism and timely updates made the process seamless. Impressed!!”</p>
 
-      <div class="quote-logo-wrap">
-        <img class="quote-logo"
-src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.jpg" alt="TAXITUR client image" /><spana><footer>Jarle Tungeland<span>TAXITUR</span></footer></span>
-      </div>
+              <div class="quote-logo-wrap">
+                <img class="quote-logo" src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialPragatiIndustries.jpg" alt="Pragati Industries logo" />
+                <footer>Utkarsh Agarwal<span>Pragati Industries</span></footer>
+              </div>
+            </blockquote>
 
-      <!--<footer>Jarle Tungeland<span>TAXITUR</span></footer>-->
-    </blockquote>
-
-
-    <!-- Pragati Industries testimonial -->
-    <blockquote class="quote">
-      <p>“Highly impressed with ACA Innovators! Worked on optimizing and designing conveyor layouts in CAD for various industries. The professionalism and timely updates made the process seamless. Impressed!!”
-      </p>
-
-      <div class="quote-logo-wrap">
-        <img class="quote-logo"          src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialPragatiIndustries.jpg" alt="Pragati Industries logo" /><span><footer>Utkarsh Agarwal<span>Pragati Industries</span></footer></span>
-      </div>
-
-      <!--<footer>Utkarsh Agarwal<span>Pragati Industries</span></footer>-->
-    </blockquote>
-	  </div>
-	</div>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- ---------- CTA ---------- -->
     <section>
       <div class="wrap">
         <div class="cta-box">
-          <div><h2>Have a mechanical product or mechanism to develop?</h2><p>Share the requirement, existing drawings, constraints or concept. We can start from an idea, sketch, CAD file or engineering problem statement.</p></div>
+          <div>
+            <h2>Have a mechanical product or mechanism to develop?</h2>
+            <p>Share the requirement, existing drawings, constraints or concept. We can start from an idea, sketch, CAD file or engineering problem statement.</p>
+          </div>
           <a class="btn btn-primary" href="#contact">Start a technical discussion →</a>
         </div>
       </div>
     </section>
 
+    <!-- ---------- Contact ---------- -->
     <section id="contact" class="section-soft">
       <div class="wrap contact-grid">
         <div>
           <div class="section-heading">
             <div class="eyebrow" style="color:#9a4c00">Contact</div>
             <h2>Tell us what you are trying to build.</h2>
-            <!--<p>Enter Text If Needed.</p>-->
           </div>
+
           <div class="contact-meta">
             <div class="meta-item"><span>Email</span><a href="mailto:aditya@acainnovators.in">aditya@acainnovators.in</a></div>
             <div class="meta-item"><span>Phone</span><a href="tel:+919871137235">+91 98711 37235</a></div>
@@ -983,12 +1156,27 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
         </div>
 
         <div class="contact-card">
-          <!-- Project enquiry form. The current form backend is Formcarry. -->
-      <form action="https://formcarry.com/s/VDJoxL3ItuM" method="POST">
-            <div><label for="name">Name</label><input type="text" id="name" name="name" required /></div>
-            <div><label for="company">Organisation</label><input type="text" id="company" name="organisation" /></div>
-            <div><label for="email">Email</label><input type="email" id="email" name="email" required /></div>
-            <div><label for="phone">Phone</label><input type="tel" id="phone" name="phone" /></div>
+          <form action="https://formcarry.com/s/VDJoxL3ItuM" method="POST">
+            <div>
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div>
+              <label for="company">Organisation</label>
+              <input type="text" id="company" name="organisation" />
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div>
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+
             <div class="field-full">
               <label for="service">What do you need help with?</label>
               <select id="service" name="service">
@@ -1001,29 +1189,55 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
                 <option>Other engineering requirement</option>
               </select>
             </div>
-            <div class="field-full"><label for="message">Project brief</label><textarea id="message" name="message" placeholder="Application, problem to solve, target dimensions, loads, material, quantity, timeline, existing CAD/drawings, etc." required></textarea></div>
-            <div class="field-full"><button class="btn btn-primary submit" type="submit">Send project enquiry →</button></div>
+
+            <div class="field-full">
+              <label for="message">Project brief</label>
+              <textarea id="message" name="message" placeholder="Application, problem to solve, target dimensions, loads, material, quantity, timeline, existing CAD/drawings, etc." required></textarea>
+            </div>
+
+            <div class="field-full">
+              <button class="btn btn-primary submit" type="submit">Send project enquiry →</button>
+            </div>
           </form>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- ---------- Footer ---------- -->
   <footer class="footer">
     <div class="wrap">
       <div class="footer-grid">
-        <div class="footer-brand"><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="ACA Innovators logo" /><h3>ACA Innovators</h3><ul><li>We Design.</li><li>We Innovate.</li></ul></div>
-        <div><h3>Capabilities</h3><ul>
-		<li>Concept & Product Design</li>
-		<li>3D CAD & Assemblies</li>
-		<li>FEA & CFD</li>
-		<li>Prototype Engineering</li>
-		<li>Rapid Prototyping</li>
-		<li>Manufacturing Support</li>
-		<li>CAD Conversion</li>
-		<li>3D Technical Animation</li></ul></div>
-        <div><h3>Contact</h3><ul><li><a href="mailto:aditya@acainnovators.in">aditya@acainnovators.in</a></li><li><a href="tel:+919871137235">+91 98711 37235</a></li><li>New Delhi, India</li></ul></div>
+        <div class="footer-brand">
+          <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Logo.jpg" alt="ACA Innovators logo" />
+          <h3>ACA Innovators</h3>
+          <ul><li>We Design.</li><li>We Innovate.</li></ul>
+        </div>
+
+        <div>
+          <h3>Capabilities</h3>
+          <ul>
+            <li>Concept & Product Design</li>
+            <li>3D CAD & Assemblies</li>
+            <li>FEA & CFD</li>
+            <li>Prototype Engineering</li>
+            <li>Rapid Prototyping</li>
+            <li>Manufacturing Support</li>
+            <li>CAD Conversion</li>
+            <li>3D Technical Animation</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:aditya@acainnovators.in">aditya@acainnovators.in</a></li>
+            <li><a href="tel:+919871137235">+91 98711 37235</a></li>
+            <li>New Delhi, India</li>
+          </ul>
+        </div>
       </div>
+
       <div class="footer-bottom">
         <span>© 2026 ACA Innovators. All rights reserved.</span>
         <span><a href="#" id="privacyOpen" class="privacy-footer-link">Privacy Policy</a></span>
@@ -1031,11 +1245,7 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
     </div>
   </footer>
 
-
-  <!-- =========================================================
-       PRIVACY POLICY MODAL
-       Opens from the footer link.
-       ========================================================= -->
+  <!-- ---------- Privacy Policy Modal ---------- -->
   <div id="privacyModal" class="privacy-modal" aria-hidden="true">
     <div class="privacy-modal-content" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
       <button class="privacy-close" id="privacyClose" type="button" aria-label="Close Privacy Policy">&times;</button>
@@ -1100,20 +1310,57 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
     </div>
   </div>
 
-  <a class="whatsapp" href="https://wa.me/919871137235?text=Hi,%20I%20would%20like%20to%20discuss%20an%20engineering%20requirement." target="_blank" aria-label="Chat on WhatsApp"><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/WhatsAppIcon.jpg" alt="WhatsApp" /></a>
+  <!-- ---------- Floating WhatsApp ---------- -->
+  <a class="whatsapp"
+     href="https://wa.me/919871137235?text=Hi,%20I%20would%20like%20to%20discuss%20an%20engineering%20requirement."
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Chat on WhatsApp">
+    <img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/WhatsAppIcon.jpg" alt="WhatsApp" />
+  </a>
 
   <!-- =========================================================
-     JAVASCRIPT
-     Mobile navigation behaviour and lightweight interactions
-     ========================================================= -->
-<script>
-    /* Mobile navigation */
+       ALL JAVASCRIPT
+       Keep this entire block inside the script tags.
+       ========================================================= -->
+  <script>
+    /* ---------- Stewart Platform Automatic Carousel ---------- */
+    document.querySelectorAll('.stewart-carousel').forEach(carousel => {
+      const slides = carousel.querySelectorAll('.stewart-slide');
+
+      if (slides.length < 2) return;
+
+      let currentIndex = 0;
+
+      // Change to the next image every 3 seconds.
+      setInterval(() => {
+        slides[currentIndex].classList.remove('active');
+
+        currentIndex = (currentIndex + 1) % slides.length;
+
+        slides[currentIndex].classList.add('active');
+      }, 2500);
+    });
+
+
+    /* ---------- Mobile Navigation ---------- */
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-    /* Privacy Policy modal */
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+
+    /* ---------- Privacy Policy Modal ---------- */
     const privacyModal = document.getElementById('privacyModal');
     const privacyOpen = document.getElementById('privacyOpen');
     const privacyClose = document.getElementById('privacyClose');
@@ -1130,38 +1377,35 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
       document.body.style.overflow = '';
     }
 
-    privacyOpen.addEventListener('click', (event) => {
+    privacyOpen.addEventListener('click', event => {
       event.preventDefault();
       openPrivacyPolicy();
     });
 
     privacyClose.addEventListener('click', closePrivacyPolicy);
 
-    window.addEventListener('click', (event) => {
+    window.addEventListener('click', event => {
       if (event.target === privacyModal) {
         closePrivacyPolicy();
       }
     });
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && privacyModal.style.display === 'block') {
+    document.addEventListener('keydown', event => {
+      if (
+        event.key === 'Escape' &&
+        privacyModal.style.display === 'block'
+      ) {
         closePrivacyPolicy();
       }
     });
 
-/* ---------------------------------------------------------
-       Dynamic Testimonial Slider
-       Shows exactly 2 testimonials at a time.
 
-       For N testimonials:
-       1-2 → 2-3 → ... → (N-1)-N → N-1 → 1-2
+    /* ---------- Dynamic Testimonial Slider ---------- */
+    const testimonialViewport =
+      document.getElementById('testimonialViewport');
 
-       To add testimonials later, only add another:
-       <blockquote class="quote"> ... </blockquote>
-       inside #testimonialTrack.
-       --------------------------------------------------------- */
-    const testimonialViewport = document.getElementById('testimonialViewport');
-    const testimonialTrack = document.getElementById('testimonialTrack');
+    const testimonialTrack =
+      document.getElementById('testimonialTrack');
 
     if (testimonialViewport && testimonialTrack) {
       const originalTestimonials = Array.from(
@@ -1176,9 +1420,7 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
       let resettingTestimonials = false;
 
       /*
-         For 2 or more testimonials, append clones of testimonial 1 and 2.
-         This creates the wrap-around pairs:
-         ... (N-1)-N → N-1 → 1-2.
+        Duplicate the first two testimonials to create a smooth loop.
       */
       if (originalTestimonialCount >= 2) {
         const firstClone = originalTestimonials[0].cloneNode(true);
@@ -1193,21 +1435,25 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
 
       function calculateTestimonialStep() {
         const firstCard = testimonialTrack.querySelector('.quote');
+
         if (!firstCard) return;
 
         const trackStyles = getComputedStyle(testimonialTrack);
-        const gap = parseFloat(trackStyles.columnGap || trackStyles.gap || 0);
+        const gap = parseFloat(trackStyles.gap) || 0;
 
-        testimonialStep = firstCard.getBoundingClientRect().width + gap;
+        testimonialStep =
+          firstCard.getBoundingClientRect().width + gap;
 
         testimonialTrack.style.transition = 'none';
+
         testimonialTrack.style.transform =
           `translateX(-${testimonialIndex * testimonialStep}px)`;
 
-        /* Force the browser to apply the no-transition position immediately. */
+        // Force the browser to apply the position immediately.
         testimonialTrack.offsetHeight;
 
-        testimonialTrack.style.transition = 'transform .75s ease-in-out';
+        testimonialTrack.style.transition =
+          'transform .75s ease-in-out';
       }
 
       function moveToTestimonialPair(index, animate = true) {
@@ -1224,31 +1470,19 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
       }
 
       function nextTestimonialPair() {
-        if (originalTestimonialCount < 2 || resettingTestimonials) return;
+        if (
+          originalTestimonialCount < 2 ||
+          resettingTestimonials
+        ) {
+          return;
+        }
 
-        /*
-           Index meanings for N testimonials:
-           0       = 1-2
-           1       = 2-3
-           ...
-           N-2     = (N-1)-N
-           N-1     = N-1
-           N       = cloned 1-2
-
-           After the cloned 1-2 finishes sliding into view,
-           transitionend silently resets the track to real 1-2.
-        */
         if (testimonialIndex < originalTestimonialCount) {
           moveToTestimonialPair(testimonialIndex + 1, true);
         }
       }
 
       testimonialTrack.addEventListener('transitionend', () => {
-        /*
-           We have reached the cloned 1-2 pair at index N.
-           Instantly reset to the real 1-2 pair at index 0.
-           Because the visible content is identical, the reset is invisible.
-        */
         if (testimonialIndex === originalTestimonialCount) {
           resettingTestimonials = true;
           testimonialIndex = 0;
@@ -1258,16 +1492,25 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
 
           testimonialTrack.offsetHeight;
 
-          testimonialTrack.style.transition = 'transform .75s ease-in-out';
+          testimonialTrack.style.transition =
+            'transform .75s ease-in-out';
+
           resettingTestimonials = false;
         }
       });
 
       function startTestimonialSlider() {
-        if (originalTestimonialCount < 2 || testimonialTimer) return;
+        if (
+          originalTestimonialCount < 2 ||
+          testimonialTimer
+        ) {
+          return;
+        }
 
-        /* Each testimonial pair remains visible for 3.5 seconds. */
-        testimonialTimer = setInterval(nextTestimonialPair, 3500);
+        testimonialTimer = setInterval(
+          nextTestimonialPair,
+          3500
+        );
       }
 
       function stopTestimonialSlider() {
@@ -1281,23 +1524,22 @@ src="https://adityagithubgupta.github.io/WebsiteACAInnovators/TestimonialJarle.j
         calculateTestimonialStep();
         startTestimonialSlider();
 
-        /* Pause while the visitor is reading with the pointer over the block. */
-        testimonialViewport.addEventListener('mouseenter', stopTestimonialSlider);
-        testimonialViewport.addEventListener('mouseleave', startTestimonialSlider);
+        testimonialViewport.addEventListener(
+          'mouseenter',
+          stopTestimonialSlider
+        );
 
-        /* Recalculate card width and slide distance after browser resizing. */
+        testimonialViewport.addEventListener(
+          'mouseleave',
+          startTestimonialSlider
+        );
+
         window.addEventListener('resize', calculateTestimonialStep);
       } else if (originalTestimonialCount === 1) {
-        /*
-           Graceful fallback if the website temporarily contains only one
-           testimonial: show the single card without running the slider.
-        */
         testimonialTrack.style.justifyContent = 'center';
         originalTestimonials[0].style.flexBasis = '50%';
       }
     }
-
-
   </script>
 </body>
 </html>
