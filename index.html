@@ -233,6 +233,80 @@
     .feature-list li { margin:8px 0; padding-left:23px; position:relative; }
     .feature-list li:before { content:"✓"; color:var(--success); font-weight:900; position:absolute; left:0; }
 
+	 
+/* Stewart Platform Image Carousel */
+	.project-media.carousel {
+	  position: relative;
+	  width: 100%;
+	  overflow: hidden;
+	  border-radius: 12px;
+	  aspect-ratio: 16 / 10;
+	}
+	
+	.project-media.carousel .carousel-image {
+	  display: none;
+	  width: 100%;
+	  height: 100%;
+	  object-fit: contain;
+	}
+	
+	.project-media.carousel .carousel-image.active {
+	  display: block;
+	}
+	
+	.carousel-btn {
+	  position: absolute;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  background: rgba(41, 44, 96, 0.8);
+	  color: white;
+	  border: none;
+	  border-radius: 50%;
+	  width: 36px;
+	  height: 36px;
+	  cursor: pointer;
+	  font-size: 18px;
+	  z-index: 2;
+	}
+	
+	.carousel-btn:hover {
+	  background: #f4a62a;
+	  color: #292c60;
+	}
+	
+	.carousel-btn.prev {
+	  left: 10px;
+	}
+	
+	.carousel-btn.next {
+	  right: 10px;
+	}
+	
+	.carousel-dots {
+	  position: absolute;
+	  bottom: 10px;
+	  left: 0;
+	  right: 0;
+	  display: flex;
+	  justify-content: center;
+	  gap: 8px;
+	  z-index: 2;
+	}
+	
+	.carousel-dot {
+	  width: 9px;
+	  height: 9px;
+	  padding: 0;
+	  border: none;
+	  border-radius: 50%;
+	  background: #b8b8b8;
+	  cursor: pointer;
+	}
+	
+	.carousel-dot.active {
+	  background: #f4a62a;
+	}
+ 
 /* ---------- Safety Shuttle Video Size ---------- */
 	.safety-video {
 	  min-height: 0;
@@ -768,7 +842,17 @@
 
         <div class="projects">
           <article class="project">
-            <div class="project-media"><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Stewart1.png" alt="ACA Innovators Stewart Platform 1" /><img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Stewart2.png" alt="ACA Innovators Stewart Platform 2" /></div>
+            <div class="project-media carousel">
+				<img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Stewart1.png" alt="ACA Innovators Stewart Platform 1" class="carousel-image active"/>
+				<img src="https://adityagithubgupta.github.io/WebsiteACAInnovators/Stewart2.png" alt="ACA Innovators Stewart Platform 2" class="carousel-image active"/>
+				<button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+  				<button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+
+  				<div class="carousel-dots">
+    				<button class="carousel-dot active" aria-label="Show image 1"></button>
+    				<button class="carousel-dot" aria-label="Show image 2"></button>
+  				</div>
+			</div>
             <div class="project-copy">
               <span class="tag">In development</span>
               <h3>6-DOF Stewart Platform</h3>
